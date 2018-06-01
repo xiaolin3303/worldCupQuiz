@@ -1,0 +1,10 @@
+.tab-item{
+	padding : 15px;
+	border-bottom : 1px solid #ececec;
+}
+.tab-item text {
+	width : 80px;
+	display :inline-block;
+	padding-left : 10px;
+	text-align : center;
+}

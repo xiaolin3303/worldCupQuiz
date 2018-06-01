@@ -1,0 +1,16 @@
+<!--personal.wxml-->
+<view class="container">
+  <view class="title">
+    <p>全部战场都他妈的在这了</p>
+  </view>
+  <view class="create-group-name"> 
+      <view>战场1</view>
+      <view>战场2</view>
+      <view>战场3</view>
+      <view>战场4</view>
+      <view>战场5</view>
+      <view>战场6</view>
+  </view>
+
+</view>
+

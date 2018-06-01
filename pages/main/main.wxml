@@ -1,0 +1,23 @@
+<!--logs.wxml-->
+<view class="container log-list">
+	 <image   class='background' src="/assets/WechatIMG10.jpeg" mode="scaleToFill"></image>
+	<view class="content">
+      <view class="tab-item personal" bindtap="bindViewPersonal">
+      	<image   class='boy' src="/assets/boy.png" mode="scaleToFill"></image>
+         <text>个人争霸</text>
+      </view>
+      <view class="tab-item leaderboard" bindtap="bindViewGroup">
+        <image   class='placeholder' src="/assets/placeholder.png" mode="scaleToFill"></image>
+        <text>刺激战场</text>
+      </view>
+      <view class="tab-item leaderboard" bindtap="bindViewRank">
+        <image   class='placeholder' src="/assets/placeholder.png" mode="scaleToFill"></image>
+        <text>积分榜</text>
+      </view>
+
+      </view>
+     <view class="bottom-content">
+     	参加结果猜测， 获得部门大奖~
+     	</view>
+  </view>
+

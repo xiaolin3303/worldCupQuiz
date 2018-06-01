@@ -1,0 +1,30 @@
+.tab-item{
+  padding : 15px;
+  border-bottom : 1px solid #ececec;
+}
+.tab-item text {
+  width : 80px;
+  display :inline-block;
+  padding-left : 10px;
+  text-align : center;
+
+}
+.swiper-tab{
+    width: 100%;
+    border-bottom: 2rpx solid #ccc;
+    text-align: center;
+    height: 92rpx;
+    line-height: 88rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    background :#217b41;
+}
+.swiper-tab-item{
+    width: 50%; 
+    color:#fff;
+}
+.active{
+    color:#217b41;
+    background : #fff;
+}

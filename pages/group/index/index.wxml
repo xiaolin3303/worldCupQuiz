@@ -1,0 +1,38 @@
+<!--personal.wxml-->
+<view class="container">
+  <view class="title">
+    <view>组队竞猜</view>
+    <view>积分赢大奖</view>
+  </view>
+  <view class="create-group-name"> 
+    <input placeholder="为队伍起名(不超过5字符)" bindinput="createGroupName" />
+    <button bindtap="confirmGroupName">确认</button>
+  </view>
+  <view class="groupeer-list">
+    <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view> <text class="userinfo-nickname">{{userInfo.nickName}}</text></view>
+     
+    </view>
+        <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view> <text class="userinfo-nickname">{{userInfo.nickName}}</text></view>
+     
+    </view>
+        <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view> <text class="userinfo-nickname">{{userInfo.nickName}}</text></view>
+     
+    </view>
+        <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view> <text class="userinfo-nickname">{{userInfo.nickName}}</text></view>
+     
+    </view>
+
+  </view>
+  <view class="btn-wrapper">
+    <button bindtap="createGroup">邀请好友</button>
+  </view>
+</view>
+

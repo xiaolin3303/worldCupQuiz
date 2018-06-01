@@ -1,0 +1,19 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/main/main",
+    "pages/rank/rank",
+    "pages/personal/index/index",
+    "pages/personal/champion/champion",
+    "pages/personal/championRes/championRes",
+    "pages/group/index/index",
+    "pages/group/join/join",
+    "pages/group/arenalist/arenalist"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "世界杯竞猜",
+    "navigationBarTextStyle":"black"
+  }
+}

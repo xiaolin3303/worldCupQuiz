@@ -1,0 +1,148 @@
+.personal-wrapper{
+
+	background: #1f663b;
+	height : 100%;
+}
+
+.tab-item{
+	padding : 15px;
+	border-bottom : 1px solid #ececec;
+}
+.tab-item text {
+	width : 80px;
+	display :inline-block;
+	padding-left : 10px;
+	text-align : center;
+}
+.swiper-tab{
+    width: 100%;
+    border-bottom: 2rpx solid #ccc;
+    text-align: center;
+    height: 92rpx;
+    line-height: 88rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    background :#217b41;
+}
+.group-sub-tab {
+  	text-align : center;
+  	line-height:29px;
+  	padding : 10px;
+  	width:100%;
+  	background : #fff;
+
+}
+.group-sub-tab text{
+	background : #ececec;
+	height : 29px;
+	width : 29px;
+	display:inline-block;
+   	border-radius: 19px;
+   	margin-left : 10px;
+
+}
+.group-sub-tab .sub-tab-active {
+	background :#f7c83b;
+}
+view .res-active {
+	background :#f7c83b;
+}
+.sub-tab-item{
+	width : 12.5%;
+	display:inline-block;
+}
+.swiper-tab-item{
+    width: 30%; 
+    color:#fff;
+
+}
+.active{
+    color:#217b41;
+    background : #fff;
+}
+swiper{
+  text-align: center;
+}
+.none {
+	display : none 
+}
+
+.group-match-list {
+	padding:20px;
+
+}
+
+.group-match-list .match {
+	border-radius: 4px;
+	background: #fefefe;
+	padding-top: 10px;
+	margin-bottom : 15px;
+}
+
+.group-match-list .match .box {
+	display: flex;
+	flex-direction: row;
+	font-size:14px;
+	text-align:center;
+
+}
+
+.group-match-list .match .box .item {
+	flex: 1;
+}
+
+.group-match-list .match .box .item .country {
+	height: 31px;
+	font-size: 14px;
+}
+
+.group-match-list .match .tip {
+	height: 25px;
+	background: #edeef2;
+	text-align: center;
+	line-height: 25px;
+	color: #217b41;
+	font-size: 12px;
+}
+.country{
+	font-size : 20px;
+}
+.select-btn{
+	background :#ececec;
+	border-radius: 14px;
+	width:74%;
+
+	font-size:12px;
+	margin-bottom : 15px;
+
+}
+.forecast-score{
+	background : #ececec;
+	position:relative;
+	bottom : 0px;
+	color: #1f663b;
+	font-size: 10px;
+	text-align:center;
+	padding : 5px 0px ;
+	border-radius-bottom: 14px;
+}
+.bottom-confrim-btn{
+	background : #fff ;
+	display : flex;
+	flex-flow: row;
+	position : fixed;
+	bottom : 0px ;
+	width : 100%;
+}
+.oper-list{
+	width : 65%;
+}
+.btn-wrapper{
+	width : 35%;
+
+}
+.btn-wrapper button {
+	background : #ed3829 ;
+	color : #fff;
+}

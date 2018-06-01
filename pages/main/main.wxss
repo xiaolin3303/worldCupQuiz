@@ -1,0 +1,42 @@
+.log-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.log-item {
+  margin: 10rpx;
+}
+.personal,.leaderboard{
+	background : #efafaf;
+	padding : 20px 70px;
+	margin-top :30px;
+	 display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	color :#fff;
+
+}	
+.leaderboard{
+	background : #ecefaf;
+}
+.group{
+	background : #afefc7;
+	padding : 20px 50px;
+	
+}
+.background{
+	height : 190px;
+}
+.boy{
+	width :40px;
+	height :40px;
+
+}
+.placeholder{
+	width :40px;
+	height :40px;
+
+}
+.bottom-content{
+	margin-top : 20px;
+}
