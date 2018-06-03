@@ -13,7 +13,6 @@ page {
 } */
 
 .container {
-	height: 100%;
 	width: 100%;
 }
 
@@ -98,4 +97,9 @@ page {
 }
 .none {
 	display : none;
+}
+
+.text-overflow {
+	text-overflow:ellipsis;
+	overflow: hidden;
 }
