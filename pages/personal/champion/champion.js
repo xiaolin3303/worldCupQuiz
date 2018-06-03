@@ -9,17 +9,13 @@ const sepcTime = require("../../../config/specTimeConfig");
 
 Page({
   data: {
-    navigateList: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-    currentTab: 1,
-    subCurrentTab : 'A',
-    quizRes : {},
-    forecastScore : 0,
-    groupListData : [],
     selectData: {},
+    currentTab: 1,
     championData : [],
     selectChampion: null,
-    isChampionResTime : false,
-    totalScore: 0
+    isChampionResTime : +new Date() > sepcTime.CHAMPION_RES_TIME,
+    // isChampionResTime: true,
+    championResData :{}
   },
   onLoad:function(e) {
 
@@ -30,7 +26,7 @@ Page({
 
     wx.request({
 
-      url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetBetList?username=lynasliu',
+      url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetChampionList?username=lynasliu',
       method : 'get',
       success: (res)=> {
         if(res.data.ret == -102){
@@ -41,16 +37,38 @@ Page({
               mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
             })  
         }
+
         // res.data.data[0].player_answer_id = 1;
         // res.data.data[1].player_answer_id = null;
           this.setData({
-            groupListData : res.data.data.map(group => Object.assign({}, group, {
-              isLock: typeof group.player_answer_id === 'number'
-            })),
-            championData : championList.data
+            championData : res.data.data
           })
       }
     })
+
+    wx.request({
+
+      url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetChampionRes?user_id=wesperhuang',
+      method : 'get',
+      success: (res)=> {
+        if(res.data.ret == -102){
+            wx.showToast({  
+              title: '您没有权限，请联系管理员开通',  //标题  
+              width : 200,
+              icon: 'success',  //图标，支持"success"、"loading"  
+              mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+            })  
+        }
+
+        // res.data.data[0].player_answer_id = 1;
+        // res.data.data[1].player_answer_id = null;
+          this.setData({
+            championResData : res.data.data
+          })
+      }
+    })
+
+
 
   },
 
@@ -149,13 +167,16 @@ Page({
     const {teamid} = e.currentTarget.dataset;
     const data = {
         team_id : teamid,
-        user_id : 'lynasliu'
+        user_id : 'yeehoneliu'
     }
 
     wx.request({
 
       url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/InsertChampion',
       method : 'post',
+      header: { 
+        'content-type': 'application/x-www-form-urlencoded'
+      }, 
       data,
       success: (res)=> {
 

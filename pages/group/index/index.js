@@ -5,9 +5,10 @@ const getData = require("../../../model/dataModel");
 
 Page({
   data: {
-    userInfo: {},
     inputValue : '',
-    hasCover : false 
+    hasCover : false,
+    teamList: [],
+    userInfo: null
   },
   //事件处理函数
   bindVote: function() {
@@ -28,32 +29,44 @@ Page({
   },
 
   onLoad: function () {
-    if (app.globalData.userInfo) {
+    if (app.globalData.rtxUserInfo) {
       this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        userInfo: {
+          nickname: app.globalData.rtxUserInfo.token.substr(0, 4)
+        },
+        hasUserInfo: true,
+        teamList: this.data.teamList.push({
+          nickname: app.globalData.rtxUserInfo.token.substr(0, 4)
+        })
       })
-    } else if (this.data.canIUse){
+    } else {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+      app.userInfoReadyCallback = userInfo => {
+        console.log(userInfo)
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          userInfo: {
+            nickname: userInfo.token.substr(0, 4)
+          },
+          hasUserInfo: true,
+          teamList: this.data.teamList.push({
+            nickname: userInfo.token.substr(0, 4)
+          })
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
     }
+    //  else {
+    //   // 在没有 open-type=getUserInfo 版本的兼容处理
+    //   wx.getUserInfo({
+    //     success: res => {
+    //       app.globalData.userInfo = res.userInfo
+    //       this.setData({
+    //         userInfo: res.userInfo,
+    //         hasUserInfo: true
+    //       })
+    //     }
+    //   })
+    // }
   },
 
   getUserInfo: function(e) {
@@ -82,18 +95,21 @@ Page({
   },
 
   confirmGroupName:function(e){
+
+
       //TODO 
+
+      const data  = {
+         groupName : this.data.inputValue,
+         groupLeader : 'viinyxu'
+      }
       wx.request({
-        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/makeGroup',
+        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/makeGroup',
         method : 'post',
         header: { 
-          'content-type': 'application/json' 
+          'content-type': 'application/x-www-form-urlencoded'
         }, 
-        data: {
-          groupName: this.data.inputValue,
-          groupLeader : 'carlsonlin'
-
-        },
+        data,
         success: function(res) {
           console.log('res',res)
         }

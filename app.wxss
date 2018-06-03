@@ -1,5 +1,6 @@
 /**app.wxss**/
 page {
+	width: 100%;
 	height: 100%;
 }
 
@@ -13,7 +14,6 @@ page {
 } */
 
 .container {
-	height: 100%;
 	width: 100%;
 }
 
@@ -98,4 +98,9 @@ page {
 }
 .none {
 	display : none;
+}
+
+.text-overflow {
+	text-overflow:ellipsis;
+	overflow: hidden;
 }

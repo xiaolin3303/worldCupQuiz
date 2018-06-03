@@ -1,7 +1,5 @@
 .personal-wrapper{
-
 	background: #1f663b;
-	height : 100%;
 }
 
 .tab-item{
