@@ -6,7 +6,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
+    let me = this;
     wx.login({
       success: function(res) {
         if (res.code) {
@@ -19,7 +19,11 @@ App({
               code: res.code
             },
             success: function(res) {
-              console.log('res',res)
+              console.log('login', res);
+              me.globalData.rtxUserInfo = res.data;
+              if (me.userInfoReadyCallback) {
+                me.userInfoReadyCallback(res.data)
+              }
             }
           })
         } else {
@@ -27,6 +31,7 @@ App({
         }
       }
     });
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -35,13 +40,52 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              console.log('userInfo', res.userInfo)
+              me.globalData.userInfo = res.userInfo
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
+              // if (this.userInfoReadyCallback) {
+              //   this.userInfoReadyCallback(res)
+              // }
+            }
+          })
+        } else {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+              wx.getUserInfo({
+                success: res => {
+                  // 可以将 res 发送给后台解码出 unionId
+                  console.log('userInfo', res.userInfo)
+                  me.globalData.userInfo = res.userInfo
+                }
+              })
+              wx.login({
+                success: function(res) {
+                  if (res.code) {
+                    //发起网络请求
+
+                    wx.request({
+                      url: 'https://unionguard.3g.qq.com/LoginJsCodeSession',
+                      method : 'post',
+                      data: {
+                        code: res.code
+                      },
+                      success: function(res) {
+                        console.log('login', res);
+                        me.globalData.rtxUserInfo = res.data;
+                      }
+                    })
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              });
+              
+            },
+            fail: function () {
+              console.log('authorize failed')
             }
           })
         }
@@ -50,6 +94,7 @@ App({
   },
   
   globalData: {
-    userInfo: null
+    userInfo: null,
+    rtxUserInfo: null
   }
 })

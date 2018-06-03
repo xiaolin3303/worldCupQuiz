@@ -6,7 +6,7 @@
     <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">淘汰赛</view>
   </view>
 
-  <view class = "{{currentTab == 1 && !isChampionResTime  ? '' : 'none' }}">
+  <view class = "{{isChampionResTime  ? 'none' : '' }}">
     <view class='deadline'>投票截止时间：2018/06/14 18:00</view>
       <view class="champion-match-list">
         <view class="champion-match {{ selectChampion === champion.team_id1 ? 'selected' : ''}}" wx:for="{{championData}}" wx:for-index="i" wx:for-item="champion" wx:key="champion" data-championid="{{champion.team_id1}}" >
@@ -28,14 +28,14 @@
         </view>
   </view>
 
-  <view class = "champion-wrapper {{currentTab == 1 && (1 || isChampionResTime) ?  '' : 'none' }}">
+  <view class = "champion-wrapper {{isChampionResTime ? '' : 'none' }}">
     <image class="result-background" src="/assets/guess-right.png"></image>
     <view class="mt40 user-list">
       <view class="mt20 ft12 tac">猜中人员名单</view>
       <view class="list mt20">
-        <view class="user" wx:for="{{championResData.win_user_id}}" wx:for-index="index" wx:for-item="user" wx:key="user">
-          <image class="avatar vam mr30"></image>
-          <text>{{user.user_id}}</text>
+        <view class="user row" wx:for="{{championResData.win_user_id}}" wx:for-index="index" wx:for-item="user" wx:key="user">
+          <image class="avatar vam mr30 col-auto"></image>
+          <view class="col text-overflow">{{user.user_id}}</view>
         </view>
       </view>
     </view>

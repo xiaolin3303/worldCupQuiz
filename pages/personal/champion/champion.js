@@ -13,7 +13,8 @@ Page({
     currentTab: 1,
     championData : [],
     selectChampion: null,
-    isChampionResTime : false,
+    isChampionResTime : +new Date() > sepcTime.CHAMPION_RES_TIME,
+    // isChampionResTime: true,
     championResData :{}
   },
   onLoad:function(e) {
