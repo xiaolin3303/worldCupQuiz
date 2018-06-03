@@ -15,6 +15,11 @@ Page({
       url: '../personal/index/index'
     })
   },
+  bindViewGroup:function(){
+    wx.navigateTo({
+      url: '../group/index/index'
+    })
+  },
   onLoad: function () {
     this.setData({
       logs: (wx.getStorageSync('logs') || []).map(log => {

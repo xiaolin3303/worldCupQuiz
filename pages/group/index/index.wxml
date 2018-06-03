@@ -36,3 +36,10 @@
   </view>
 </view>
 
+<view class="tip-cover {{hasCover ? '' : 'none'}}" >
+  <view class="tip-content">
+      点击右上角分享按钮进行分享
+  </view>
+    
+</view>
+

@@ -1,0 +1,63 @@
+<!--personal.wxml-->
+<view class="topic-wrapper">
+  <view class="tab row middle">
+    <view class="col tac item">
+      <view class="mt10">第一场</view>
+      <view class="ft25">竞猜中</view>
+    </view>
+    <view class="col tac item">
+      <view class="mt10">第二场</view>
+      <view class="ft25">竞猜中</view>
+    </view>
+    <view class="col tac item">
+      <view class="mt10">第三场</view>
+      <view class="ft25">竞猜中</view>
+    </view>
+    <view class="col tac item">
+      <view class="mt10">第四场</view>
+      <view class="ft25">竞猜中</view>
+    </view>
+  </view>
+  <view class="topic-list"> 
+      <view class="topic-item">
+        <view class="topic">1.在哥伦比亚对塞尔维亚的比赛中，哥伦比亚队将进几个球</view>
+        <view class="answer-list">
+          <view class="option">A.1个</view>
+          <view class="option">B.2个</view>
+          <view class="option">C.4个</view>
+        </view>
+      </view>
+  </view>
+  <view class="tac mt40">
+    <view class="submit-btn">提交答案</view>
+  </view>
+  <view class="group-info mt40">
+    <view class="group-name tac">
+        战无不胜队
+    </view>
+    <view class="user-info-wrapper">   
+      <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view class="mt20 ft25">xuxu</view>
+        <view class="mt20 ft25">100</view>       
+      </view>  
+      <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view class="mt20 ft25">xuxu</view>
+        <view class="mt20 ft25">100</view>       
+      </view>  
+      <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view class="mt20 ft25">xuxu</view>
+        <view class="mt20 ft25">100</view>       
+      </view>  
+      <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view class="mt20 ft25">xuxu</view>
+        <view class="mt20 ft25">100</view>       
+      </view>  
+    </view>    
+  </view>
+  <view class="tac score">总积分:0</view>
+</view>
+
