@@ -18,6 +18,14 @@
       <view class="ft25">竞猜中</view>
     </view>
   </view>
+  <view class="matchinfo-wrapper mt40">
+    <matchinfo
+      group="{{matchInfo}}"
+      answerId="{{1}}"
+      forecastScore="{{10}}"
+    >
+    </matchinfo>
+  </view>
   <view class="topic-list"> 
       <view class="topic-item">
         <view class="topic">1.在哥伦比亚对塞尔维亚的比赛中，哥伦比亚队将进几个球</view>
@@ -31,7 +39,13 @@
   <view class="tac mt40">
     <view class="submit-btn">提交答案</view>
   </view>
-  <view class="group-info mt40">
+  <view class="mt40">
+    <teaminfo
+      teamName="渣渣薇宝队"
+    >
+    </teaminfo>
+  </view>
+  <!-- <view class="group-info mt40">
     <view class="group-name tac">
         战无不胜队
     </view>
@@ -58,6 +72,6 @@
       </view>  
     </view>    
   </view>
-  <view class="tac score">总积分:0</view>
+  <view class="tac score">总积分:0</view> -->
 </view>
 

@@ -1,44 +1,68 @@
-.topic-list {
-	padding: 20rpx 30rpx;
+.row {
+	display: flex;
+	flex-direction: row;
 }
 
-
-.arenalist-wrapper{
-	margin-top : 20px;
-}
-.answer-list{
-	display : flex;
-	flex-wrap : wrap;
+.row > .col {
+	flex: 1;
 }
 
-.topic-list .topic-item {
-	background: #e8eaee;
-	padding: 20rpx 30rpx;
-	border-radius: 10rpx;
+.row > .col-auto {
+	flex: 0 1 auto;
 }
 
-.matchinfo-wrapper {
-	margin: 30rpx;
+.row.middle {
+	align-items: center;
 }
 
-.submit-btn {
-	width: 450rpx;
-	height: 100rpx;
-	color: white;
+.tar {
+	text-align: right;
+}
+
+.tac {
 	text-align: center;
-	border-radius: 50rpx;
-	line-height: 100rpx;
-	background: #2b8b46;
-	display: inline-block;
 }
 
-.answer-list .option{
-	width : 50%;
-	box-sizing: border-box;
-	text-indent: 30rpx;
-	margin-top: 30rpx;
+.fcwhite {
+	color: white;
 }
 
+.mt10 {
+	margin-top: 10rpx;
+}
+.mt20 {
+	margin-top: 20rpx;
+}
+
+
+.mt40 {
+	margin-top: 40rpx;
+}
+
+.ft25 {
+	font-size: 25rpx;
+}
+
+.vam {
+	vertical-align: middle;
+}
+
+.ft12 {
+	font-size: 12px;
+}
+
+.mr10 {
+	margin-right: 10px;
+}
+.mr30 {
+	margin-right: 30rpx;
+}
+.none {
+	display : none;
+}
+
+
+/* components/teaminfo/teaminfo.wxss */
 .group-info{
 	background:  #0c389b;
 	padding: 30rpx 0;
