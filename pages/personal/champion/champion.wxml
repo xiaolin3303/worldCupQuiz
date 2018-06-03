@@ -12,13 +12,13 @@
         <view class="champion-match {{ selectChampion === champion.team_id1 ? 'selected' : ''}}" wx:for="{{championData}}" wx:for-index="i" wx:for-item="champion" wx:key="champion" data-championid="{{champion.team_id1}}" >
           <view class="box" >
             <view class="item">
-                <view class="champion-country">{{champion.team_name1}}</view>
+                <view class="champion-country">{{champion.team_name}}</view>
                 <view style="font-size:12px;">目前票数：
                   <text class="vote-count">{{champion.vote_num}}</text>
                 </view>
                 <view 
                   class="vote-champion" 
-                  data-teamid = "{{champion.team_id1}}"
+                  data-teamid = "{{champion.team_id}}"
                   bindtap="voteChampion">
                   投票
                 </view>
@@ -28,23 +28,14 @@
         </view>
   </view>
 
-
   <view class = "champion-wrapper {{currentTab == 1 && (1 || isChampionResTime) ?  '' : 'none' }}">
     <image class="result-background" src="/assets/guess-right.png"></image>
     <view class="mt40 user-list">
       <view class="mt20 ft12 tac">猜中人员名单</view>
       <view class="list mt20">
-        <view class="user">
+        <view class="user" wx:for="{{championResData.win_user_id}}" wx:for-index="index" wx:for-item="user" wx:key="user">
           <image class="avatar vam mr30"></image>
-          <text>xuxu</text>
-        </view>
-        <view class="user">
-          <image class="avatar vam mr30"></image>
-          <text>xuxu</text>
-        </view>
-        <view class="user">
-          <image class="avatar vam mr30"></image>
-          <text>xuxu</text>
+          <text>{{user.user_id}}</text>
         </view>
       </view>
     </view>

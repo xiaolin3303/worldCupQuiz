@@ -82,18 +82,21 @@ Page({
   },
 
   confirmGroupName:function(e){
+
+
       //TODO 
+
+      const data  = {
+         groupName : this.data.inputValue,
+         groupLeader : 'viinyxu'
+      }
       wx.request({
-        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/makeGroup',
+        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/makeGroup',
         method : 'post',
         header: { 
-          'content-type': 'application/json' 
+          'content-type': 'application/x-www-form-urlencoded'
         }, 
-        data: {
-          groupName: this.data.inputValue,
-          groupLeader : 'carlsonlin'
-
-        },
+        data,
         success: function(res) {
           console.log('res',res)
         }

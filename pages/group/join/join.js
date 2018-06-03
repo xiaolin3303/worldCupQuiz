@@ -70,16 +70,18 @@ Page({
     // wx.navigateTo({
     //   url: '../arenalist/arenalist'
     // })
-
+    const data = {
+      groupId : '9104',
+      userId : 'yeehoneliu'
+    }
 
     wx.request({
-        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/joinGroup?username=lynasliu',
+        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/joinGroup?username=lynasliu',
         method : 'post',
-        data: {
-          groupId: '9104',
-          userid : 'lissun'
-
-        },
+        header: { 
+          'content-type': 'application/x-www-form-urlencoded'
+        }, 
+        data,
         success: function(res) {
           console.log('res',res)
         }
