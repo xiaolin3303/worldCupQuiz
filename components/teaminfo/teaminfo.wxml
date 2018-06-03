@@ -27,6 +27,6 @@
 	    </view>  
 	  </view>    
 	</view>
-	<view class="tac score">总积分:0</view>
+	<view class="tac score ">总积分:0</view>
 </view>
 
