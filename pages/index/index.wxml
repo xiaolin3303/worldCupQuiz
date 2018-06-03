@@ -1,8 +1,0 @@
-<!--index.wxml-->
-<view class="container">
-  <image bindtap="bindViewTap"  class='background' src="/assets/backgrounds.jpg" mode="aspectFill"></image>
-  <view class="title">
-    <p>群雄逐鹿，玩转一夏</p>
-    <p>应用宝世界杯竞猜争霸</p>
-  </view>
-</view>

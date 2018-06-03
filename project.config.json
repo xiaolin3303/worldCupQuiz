@@ -33,12 +33,49 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
 					"name": "参加战场",
-					"pathName": "pages/group/join/join"
+					"pathName": "pages/group/join/join",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "战场列表",
+					"pathName": "pages/group/arenalist/arenalist",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "排行榜",
+					"pathName": "pages/rank/rank",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人赛主页",
+					"pathName": "pages/personal/index/index",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "竞猜主页",
+					"pathName": "pages/main/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "邀请好友",
+					"pathName": "pages/group/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "题目",
+					"pathName": "pages/group/topic/topic",
+					"query": ""
 				}
 			]
 		}

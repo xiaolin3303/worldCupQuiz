@@ -10,7 +10,7 @@ const sepcTime = require("../../../config/specTimeConfig");
 Page({
   data: {
     navigateList: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-    currentTab: 0,
+    currentTab: 1,
     subCurrentTab : 'A',
     quizRes : {},
     forecastScore : 0,
@@ -18,22 +18,40 @@ Page({
     selectData: {},
     championData : [],
     selectChampion: null,
-    isChampionResTime : false
+    isChampionResTime : false,
+    totalScore: 0
   },
   onLoad:function(e) {
 
-    // getData('https://dycrad.sparta.html5.qq.com/node/getFileNew','','正在加载',
-    //   (data) => {
-    //       console.log(datasetata);
-    //   })
-    // let quizRes = {}
-    // testData.data.forEach(group => {
-    //   quizres[group.item_id] = 
+    //  this.setData({
+    //   groupListData : testData.data,
+    //   championData : championList.data
     // })
-    this.setData({
-      groupListData : testData.data,
-      championData : championList.data
+
+    wx.request({
+
+      url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetBetList?username=lynasliu',
+      method : 'get',
+      success: (res)=> {
+        if(res.data.ret == -102){
+            wx.showToast({  
+              title: '您没有权限，请联系管理员开通',  //标题  
+              width : 200,
+              icon: 'success',  //图标，支持"success"、"loading"  
+              mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+            })  
+        }
+        // res.data.data[0].player_answer_id = 1;
+        // res.data.data[1].player_answer_id = null;
+          this.setData({
+            groupListData : res.data.data.map(group => Object.assign({}, group, {
+              isLock: typeof group.player_answer_id === 'number'
+            })),
+            championData : championList.data
+          })
+      }
     })
+
   },
 
   onShareAppMessage: function () {
@@ -49,6 +67,7 @@ Page({
     this.setData({
       selectChampion: championid
     })
+
   },
   //切换tab,个人赛分类
   clickTab:function(e) {
@@ -77,7 +96,10 @@ Page({
   },
 
   handleQuizResult:function(e) {
-      const { odds, itemid, answerid } = e.currentTarget.dataset;
+      const { odds, itemid, answerid, lockanswer } = e.currentTarget.dataset;
+      if (lockanswer === true) {
+        return
+      }
 
       // const selectItem = {
       //     itemid,
@@ -87,13 +109,20 @@ Page({
 
       // this.data.selectData.push(selectItem);
       let quizres = Object.assign({}, this.data.quizRes, {
+        
         [itemid]: {
           answerid,
           forecastScore: 10 * odds
         }
       })
+
+      const totalScore = Object.keys(quizres).reduce((acc, groupId) => {
+        return acc + (quizres[groupId].forecastScore || 0)
+      }, 0)
+
       this.setData({
         quizRes : quizres,
+        totalScore
         // forecastScore : 10 * odds,
         // selectData : this.data.selectData
       })
@@ -101,20 +130,65 @@ Page({
   },
   clearSelect:function(e){
 
+      console.log(this.data.quizRes);
+
       this.setData({
           selectData : [],
-          quizRes : -1 
+          quizRes : -1,
+          totalScore: 0
       })
   },
   submitGroupRes:function(e){
 
+      let selectData = [];
+      const {quizRes} = this.data;
+
+      selectData = Object.keys(quizRes).map(key=>{
+          let item ={
+              itemid : key ,
+              answerid : quizRes[key].answerid
+          }
+          return item 
+      });
+
+
   },
   voteChampion:function(e){
-    wx.showToast({  
-      title: '成功',  //标题  
-      icon: 'success',  //图标，支持"success"、"loading"  
-      mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
-    })  
+
+    const {teamid} = e.currentTarget.dataset;
+    const data = {
+        team_id : teamid,
+        user_id : 'lynasliu'
+    }
+
+    wx.request({
+
+      url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/InsertChampion',
+      method : 'post',
+      data,
+      success: (res)=> {
+
+        if(res.ret != -1){
+            this.setData({
+              selectChampion: teamid
+            })
+            wx.showToast({  
+              title: '成功',  //标题  
+              icon: 'success',  //图标，支持"success"、"loading"  
+              mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+            }) 
+        }else{
+            wx.showToast({  
+              title: '投票失败',  //标题  
+              icon: 'success',  //图标，支持"success"、"loading"  
+              mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+            }) 
+        }
+
+
+      }
+    })
+ 
   }
 
 })

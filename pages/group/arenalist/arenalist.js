@@ -69,5 +69,10 @@ Page({
     wx.navigateTo({
       url: '../join/join'
     })
+  },
+  gotoTopic :function(e){
+    wx.navigateTo({
+      url: '../topic/topic'
+    })
   }
 })

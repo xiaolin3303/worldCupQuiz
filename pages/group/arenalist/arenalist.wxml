@@ -1,16 +1,71 @@
 <!--personal.wxml-->
-<view class="container">
+<view class="arenalist-wrapper">
   <view class="title">
-    <p>全部战场都他妈的在这了</p>
   </view>
-  <view class="create-group-name"> 
-      <view>战场1</view>
-      <view>战场2</view>
-      <view>战场3</view>
-      <view>战场4</view>
-      <view>战场5</view>
-      <view>战场6</view>
+  <view class="arena-list"> 
+      <view class="arena-item" bindtap ="gotoTopic">
+        <view class="arena-box">
+            <text>战场1</text>
+        </view>
+      </view>
+      <view class="arena-item">
+        <view class="arena-box">
+            <text>战场1</text>
+        </view>
+      </view>
+      <view class="arena-item">
+        <view class="arena-box">
+            <text>战场1</text>
+        </view>
+      </view>
+      <view class="arena-item">
+        <view class="arena-box">
+            <text>战场1</text>
+        </view>
+      </view>
+      <view class="arena-item">
+        <view class="arena-box">
+            <text>战场1</text>
+        </view>
+      </view>
+      <view class="arena-item">
+        <view class="arena-box">
+            <text>战场1</text>
+        </view>
+      </view>                      
   </view>
+  <view class="group-info">
+      <view class="group-name">
+          战无不胜队
+      </view>
+      <view class="user-info-wrapper">   
+       <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view> <text class="userinfo-nickname">0</text></view>
+       
+      </view>
+      <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view> <text class="userinfo-nickname">0</text></view>
+       
+      </view>
+      <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view> <text class="userinfo-nickname">0</text></view>
+       
+      </view>
+      <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view> <text class="userinfo-nickname">0</text></view>
+       
+      </view>  
 
+    </view>
+      <view class="total-score">
+          总积分 ： 200
+      </view>
+          
+
+  </view>
 </view>
 

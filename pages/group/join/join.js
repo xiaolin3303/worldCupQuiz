@@ -67,8 +67,36 @@ Page({
   },
 
   gotoArena: function(e){
-    wx.navigateTo({
-      url: '../arenalist/arenalist'
-    })
+    // wx.navigateTo({
+    //   url: '../arenalist/arenalist'
+    // })
+
+
+    wx.request({
+        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/joinGroup?username=lynasliu',
+        method : 'post',
+        data: {
+          groupId: '9104',
+          userid : 'lissun'
+
+        },
+        success: function(res) {
+          console.log('res',res)
+        }
+      })
+  },
+  confirmJoin:function(e){
+      wx.request({
+        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/joinGroup?username=lynasliu',
+        method : 'post',
+        data: {
+          groupId: '9104',
+          userid : 'lissun'
+
+        },
+        success: function(res) {
+          console.log('res',res)
+        }
+      })
   }
 })

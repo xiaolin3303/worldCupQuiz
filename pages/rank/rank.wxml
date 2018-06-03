@@ -6,35 +6,15 @@
   </view></view>
 
   <view class="content">
-      <view class="tab-item">
+      <view class="tab-item" >
         <text >排名</text> 
         <text>姓名</text> 
         <text>积分</text> 
       </view>
-      <view class="tab-item">
-        <text>1</text> 
-        <text>会动的蜻蜓</text> 
-        <text>500</text> 
-      </view>
-      <view class="tab-item">
-        <text>2</text> 
-        <text>王者冲冲冲</text> 
-        <text>354</text> 
+      <view class="tab-item" wx:for="{{playerList}}" wx:for-index="index" wx:for-item="player" wx:key="player">
+        <text>{{index}}</text> 
+        <text>{{player.user_id}}</text> 
+        <text>{{player.score}}</text> 
       </view>
 
-      <view class="tab-item">
-        <text>3</text> 
-        <text>moon</text> 
-        <text>345</text> 
-      </view>
-      <view class="tab-item">
-        <text>4</text> 
-        <text>堇儿vii</text> 
-        <text>200</text> 
-      </view>
-      <view class="tab-item">
-        <text>5</text> 
-        <text>威武但奎狮</text> 
-        <text>192</text> 
-      </view>
   </view>

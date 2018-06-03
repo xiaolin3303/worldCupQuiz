@@ -5,6 +5,72 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.icon {
+	display: inline-block;
+	vertical-align: middle;
+}
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.row > .col {
+	flex: 1;
+}
+
+.row > .col-auto {
+	flex: 0 1 auto;
+}
+
+.row.middle {
+	align-items: center;
+}
+
+.tar {
+	text-align: right;
+}
+
+.tac {
+	text-align: center;
+}
+
+.fcwhite {
+	color: white;
+}
+
+.mt10 {
+	margin-top: 10rpx;
+}
+.mt20 {
+	margin-top: 20rpx;
+}
+
+
+.mt40 {
+	margin-top: 40rpx;
+}
+
+.ft25 {
+	font-size: 25rpx;
+}
+
+.vam {
+	vertical-align: middle;
+}
+
+.ft12 {
+	font-size: 12px;
+}
+
+.mr10 {
+	margin-right: 10px;
+}
+.mr30 {
+	margin-right: 30rpx;
+}
+.none {
+	display : none;
+}

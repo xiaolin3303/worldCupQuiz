@@ -49,6 +49,11 @@ Page({
         quizRes : quizres,
         forecastScore : 10 * odds
       })
+
+     // /ajax/InsertChampion
+
+
+
   }
 
 })

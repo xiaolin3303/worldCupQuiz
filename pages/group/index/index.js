@@ -6,7 +6,8 @@ const getData = require("../../../model/dataModel");
 Page({
   data: {
     userInfo: {},
-    inputValue : ''
+    inputValue : '',
+    hasCover : false 
   },
   //事件处理函数
   bindVote: function() {
@@ -22,7 +23,7 @@ Page({
     return {
       title: '微信小程序联盟',
       desc: '最具人气的小程序开发联盟!',
-      path: '/pages/personal/index/index'
+      path: '/pages/group/join/join'
     }
   },
 
@@ -65,9 +66,13 @@ Page({
   },
 
   createGroup: function(e){
-    wx.navigateTo({
-      url: '../join/join'
+
+    this.setData({
+      hasCover : true
     })
+    // wx.navigateTo({
+    //   url: '../join/join'
+    // })
   },
 
   createGroupName:function(e){
@@ -79,10 +84,15 @@ Page({
   confirmGroupName:function(e){
       //TODO 
       wx.request({
-        url: '',
+        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/makeGroup',
         method : 'post',
+        header: { 
+          'content-type': 'application/json' 
+        }, 
         data: {
-          groupname: this.data.inputValue
+          groupName: this.data.inputValue,
+          groupLeader : 'carlsonlin'
+
         },
         success: function(res) {
           console.log('res',res)

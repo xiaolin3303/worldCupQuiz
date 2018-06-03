@@ -1,0 +1,91 @@
+.topic-list {
+	padding: 20rpx 30rpx;
+}
+
+
+.arenalist-wrapper{
+	margin-top : 20px;
+}
+.answer-list{
+	display : flex;
+	flex-wrap : wrap;
+}
+
+.topic-list .topic-item {
+	background: #e8eaee;
+	padding: 20rpx 30rpx;
+	border-radius: 10rpx;
+}
+
+.submit-btn {
+	width: 450rpx;
+	height: 100rpx;
+	color: white;
+	text-align: center;
+	border-radius: 50rpx;
+	line-height: 100rpx;
+	background: #2b8b46;
+	display: inline-block;
+}
+
+.answer-list .option{
+	width : 50%;
+	box-sizing: border-box;
+	text-indent: 30rpx;
+	margin-top: 30rpx;
+}
+
+.group-info{
+	background:  #0c389b;
+	padding: 30rpx 0;
+
+}
+.user-info-wrapper{
+	display : flex ;
+	margin-top : 25px;
+	height: 100%;
+	padding: 0 60rpx;
+}
+.group-name{
+	color: white;
+	font-weight: bold;
+}
+
+.tab .item {
+	background: #2b8b46;
+	color: white;
+	height: 110rpx;
+	border-right: 1rpx solid white;
+}
+
+.score {
+	background: #d50005;
+	color: white;
+	padding: 10rpx 0;
+}
+
+.userinfo{	
+
+	width:25%;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	text-align:center;
+	color: white;
+}
+.userinfo text{
+	font-size : 10px;
+}
+.userinfo-avatar{
+	width : 100rpx;
+	height : 100rpx;
+	border: 4rpx solid white;
+	borer-radius: 100%;
+	border-radius : 15px;
+	margin: 0 auto;
+}
+.total-score{
+	margin-top : 15px;
+	font-size : 12px;
+	background : #ccc;
+}
