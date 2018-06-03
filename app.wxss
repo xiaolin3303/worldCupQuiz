@@ -1,12 +1,21 @@
 /**app.wxss**/
-.container {
+page {
+	height: 100%;
+}
+
+/* .container {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-} 
+} */
+
+.container {
+	height: 100%;
+	width: 100%;
+}
 
 .icon {
 	display: inline-block;
@@ -63,6 +72,22 @@
 
 .ft12 {
 	font-size: 12px;
+}
+
+.ft40 {
+	font-size: 40rpx;
+}
+
+.ft30 {
+	font-size: 30rpx;
+}
+
+.fcstress {
+	color: #f7c83b;
+}
+
+.fwbold {
+	font-weight: bold;
 }
 
 .mr10 {

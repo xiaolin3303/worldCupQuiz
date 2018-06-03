@@ -90,6 +90,7 @@
 	background: #d50005;
 	color: white;
 	padding: 10rpx 0;
+	font-size: 30rpx;
 }
 
 .userinfo{	

@@ -1,25 +1,24 @@
 <!--personal.wxml-->
-<view class="container">
-  <view class="title">
-    <view>组队竞猜</view>
-    <view>积分赢大奖</view>
-  </view>
-  <view class="create-group-name"> 
-    <input placeholder="为队伍起名(不超过5字符)" bindinput="createGroupName" />
-    <button bindtap="confirmGroupName">确认</button>
+<view class="container ft30">
+  <image src="/assets/team-banner.png" class="banner"></image>
+  <view class="create-name-wrapper row middle">
+    <view class="col">
+      <input class="name-input mr30" placeholder-class="name-inputp-tip" placeholder="为队伍起名(不超过5字符)" bindinput="createGroupName" />
+    </view>
+    <view class="col-auto fcstress" bindtap="confirmGroupName">确定</view> 
   </view>
   <view class="groupeer-list">
     <view class="userinfo">
+      <view class="captain">队长</view>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <view> <text class="userinfo-nickname">{{userInfo.nickName}}</text></view>
-     
+      <view><text class="userinfo-nickname fcwhite">{{userInfo.nickName || 'xuxu'}}</text></view>
     </view>
         <view class="userinfo">
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <view> <text class="userinfo-nickname">{{userInfo.nickName}}</text></view>
      
     </view>
-        <view class="userinfo">
+    <view class="userinfo">
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <view> <text class="userinfo-nickname">{{userInfo.nickName}}</text></view>
      
@@ -32,8 +31,9 @@
 
   </view>
   <view class="btn-wrapper">
-    <button bindtap="createGroup">邀请好友</button>
+    <view class="invite-btn" bindtap="createGroup">邀请好友</view>
   </view>
+  <view class="fcwhite ft30 tac mt40">6月14日前完成组队，6月15日开始进入战场</view>
 </view>
 
 <view class="tip-cover {{hasCover ? '' : 'none'}}" >

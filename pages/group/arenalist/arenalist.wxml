@@ -1,71 +1,45 @@
 <!--personal.wxml-->
-<view class="arenalist-wrapper">
-  <view class="title">
-  </view>
-  <view class="arena-list"> 
-      <view class="arena-item" bindtap ="gotoTopic">
-        <view class="arena-box">
-            <text>战场1</text>
-        </view>
-      </view>
+<view class="arenalist-wrapper ft25">
+  <view class="arena-list">
+    <view class="arena-box"> 
       <view class="arena-item">
-        <view class="arena-box">
-            <text>战场1</text>
+        <view class="tar">已结束</view>
+        <view class="tac fwbold mt20 ft40">刺激战场</view>
+        <view class="tac">队伍积分:315</view>
+        <view class="row mt20">
+          <view class="col">第五名</view>
+          <view class="col tar">查看排名</view>
         </view>
       </view>
-      <view class="arena-item">
-        <view class="arena-box">
-            <text>战场1</text>
-        </view>
-      </view>
-      <view class="arena-item">
-        <view class="arena-box">
-            <text>战场1</text>
-        </view>
-      </view>
-      <view class="arena-item">
-        <view class="arena-box">
-            <text>战场1</text>
-        </view>
-      </view>
-      <view class="arena-item">
-        <view class="arena-box">
-            <text>战场1</text>
-        </view>
-      </view>                      
-  </view>
-  <view class="group-info">
-      <view class="group-name">
-          战无不胜队
-      </view>
-      <view class="user-info-wrapper">   
-       <view class="userinfo">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <view> <text class="userinfo-nickname">0</text></view>
-       
-      </view>
-      <view class="userinfo">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <view> <text class="userinfo-nickname">0</text></view>
-       
-      </view>
-      <view class="userinfo">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <view> <text class="userinfo-nickname">0</text></view>
-       
-      </view>
-      <view class="userinfo">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <view> <text class="userinfo-nickname">0</text></view>
-       
-      </view>  
-
     </view>
-      <view class="total-score">
-          总积分 ： 200
+    <view class="arena-box active"> 
+      <view class="arena-item">
+        <view class="tar">已结束</view>
+        <view class="tac fwbold mt20 ft40">刺激战场</view>
+        <view class="tac">队伍积分:315</view>
+        <view class="row mt20">
+          <view class="col">第五名</view>
+          <view class="col tar">查看排名</view>
+        </view>
       </view>
-          
-
+    </view>
+    <view class="arena-box"> 
+      <view class="arena-item">
+        <view class="tar">已结束</view>
+        <view class="tac fwbold mt20 ft40">刺激战场</view>
+        <view class="tac">队伍积分:315</view>
+        <view class="row mt20">
+          <view class="col">第五名</view>
+          <view class="col tar">查看排名</view>
+        </view>
+      </view>
+    </view>
   </view>
+</view>
+<view class="mt40">
+  <teaminfo
+    teamName="渣渣薇宝队"
+  >
+  </teaminfo>
 </view>
 
