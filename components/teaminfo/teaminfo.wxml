@@ -1,0 +1,32 @@
+<!--components/teaminfo/teaminfo.wxml-->
+<view class="component-teaminfo">
+	<view class="group-info mt40">
+	  <view class="group-name tac">
+	      {{ teamName }}
+	  </view>
+	  <view class="user-info-wrapper">   
+	    <view class="userinfo">
+	      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+	      <view class="mt20 ft25">xuxu</view>
+	      <view class="mt20 ft25">100</view>       
+	    </view>  
+	    <view class="userinfo">
+	      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+	      <view class="mt20 ft25">xuxu</view>
+	      <view class="mt20 ft25">100</view>       
+	    </view>  
+	    <view class="userinfo">
+	      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+	      <view class="mt20 ft25">xuxu</view>
+	      <view class="mt20 ft25">100</view>       
+	    </view>  
+	    <view class="userinfo">
+	      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+	      <view class="mt20 ft25">xuxu</view>
+	      <view class="mt20 ft25">100</view>       
+	    </view>  
+	  </view>    
+	</view>
+	<view class="tac score">总积分:0</view>
+</view>
+
