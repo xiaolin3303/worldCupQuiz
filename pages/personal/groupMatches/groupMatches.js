@@ -10,7 +10,7 @@ const sepcTime = require("../../../config/specTimeConfig");
 Page({
   data: {
     navigateList: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-    currentTab: 1,
+    currentTab: 0,
     subCurrentTab : 'A',
     quizRes : {},
     forecastScore : 0,
@@ -72,17 +72,26 @@ Page({
   //切换tab,个人赛分类
   clickTab:function(e) {
 
+      //const {current} = e.currentTarget.dataset;
+      // const {currentTab} = this.data;
+
+      // if (currentTab === current) {
+      //   return false;
+      // } else {
+      //   let isTime  = sepcTime.CHAMPION_RES_TIME - new Date().getTime() 
+      //   isTime = isTime <= 0 ? true : false 
+
+      //   this.setData({
+      //     currentTab: current,
+      //     isChampionResTime : isTime
+      //   })
+      // }
+
+      debugger
       const {current} = e.currentTarget.dataset;
       const url = current == 0 ? '../groupMatches/groupMatches' : (current == 1 ? '../champion/champion' : '../eliminate/eliminate') 
       wx.navigateTo({
         url
-      })
-  },
-  //切换subtab
-  clickSubTab:function(e) {
-      const { subtab } = e.currentTarget.dataset;
-      this.setData({
-        subCurrentTab: subtab
       })
   },
 
@@ -92,15 +101,7 @@ Page({
         return
       }
 
-      // const selectItem = {
-      //     itemid,
-      //     answerid 
-      // }
-      //todo  只记录itemid相同的最后一项
-
-      // this.data.selectData.push(selectItem);
       let quizres = Object.assign({}, this.data.quizRes, {
-        
         [itemid]: {
           answerid,
           forecastScore: 10 * odds
@@ -114,14 +115,11 @@ Page({
       this.setData({
         quizRes : quizres,
         totalScore
-        // forecastScore : 10 * odds,
-        // selectData : this.data.selectData
+
       })
       
   },
   clearSelect:function(e){
-
-      console.log(this.data.quizRes);
 
       this.setData({
           selectData : [],
@@ -151,7 +149,7 @@ Page({
         team_id : teamid,
         user_id : 'lynasliu'
     }
-
+    
     wx.request({
 
       url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/InsertChampion',

@@ -8,7 +8,8 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    matchInfo: {"answerlist":[{"answe_describe":"胜利","answer_id":1,"is_correct":0,"odd":"1"},{"answe_describe":"平局","answer_id":99,"is_correct":0,"odd":"1"},{"answe_describe":"胜利","answer_id":2,"is_correct":0,"odd":"1"}],"ban_time":"2018-06-14 23:00:00","game_num":"1","group_id":"A组","item_describe":"","item_id":101,"player_answer_id":0,"team_id1":1,"team_id2":2,"team_name1":"俄罗斯","team_name2":"沙特阿拉伯","team_url1":"http://yyb.gtimg.com/fibadcms_img/adcms/faa31612dfaec9232b57ecbb1119fdd91527735180011601.png","team_url2":"http://yyb.gtimg.com/fibadcms_img/adcms/06d4c9a5463ddbf11008ed5ab8882d501527735217763204.png"}
   },
   //事件处理函数
   bindVote: function() {

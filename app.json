@@ -2,9 +2,9 @@
   "pages":[
     "pages/main/main",
     "pages/rank/rank",
-    "pages/personal/index/index",
+    "pages/personal/groupMatches/groupMatches",
     "pages/personal/champion/champion",
-    "pages/personal/championRes/championRes",
+    "pages/personal/eliminate/eliminate",
     "pages/group/index/index",
     "pages/group/join/join",
     "pages/group/arenalist/arenalist",

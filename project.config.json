@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -54,9 +54,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "个人赛主页",
-					"pathName": "pages/personal/index/index",
+					"pathName": "pages/personal/groupMatches/groupMatches",
 					"query": ""
 				},
 				{
