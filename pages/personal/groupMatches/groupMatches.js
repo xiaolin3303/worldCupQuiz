@@ -6,12 +6,11 @@ const getData = require("../../../model/dataModel");
 const testData = require("../../../test/testData");
 const championList  = require("../../../test/championList");
 const sepcTime = require("../../../config/specTimeConfig");
+const Host = require("../../../config/host.config"); 
 
 Page({
   data: {
-    navigateList: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
     currentTab: 0,
-    subCurrentTab : 'A',
     quizRes : {},
     forecastScore : 0,
     groupListData : [],
@@ -23,26 +22,23 @@ Page({
   },
   onLoad:function(e) {
 
-    //  this.setData({
-    //   groupListData : testData.data,
-    //   championData : championList.data
-    // })
-
+    const url = `${Host.service}/GetBetList?`  ; 
     wx.request({
 
-      url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetBetList?username=lynasliu',
+      url,
       method : 'get',
+      data : {
+          username : 'lynasliu'
+      },
       success: (res)=> {
-        if(res.data.ret == -102){
-            wx.showToast({  
-              title: '您没有权限，请联系管理员开通',  //标题  
-              width : 200,
-              icon: 'success',  //图标，支持"success"、"loading"  
-              mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
-            })  
-        }
-        // res.data.data[0].player_answer_id = 1;
-        // res.data.data[1].player_answer_id = null;
+          if(res.data.ret == -102){
+              wx.showToast({  
+                title: '您没有权限，请联系管理员开通',  //标题  
+                width : 200,
+                icon: 'success',  //图标，支持"success"、"loading"  
+                mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+              })  
+          }
           this.setData({
             groupListData : res.data.data.map(group => Object.assign({}, group, {
               isLock: typeof group.player_answer_id === 'number'
@@ -72,22 +68,6 @@ Page({
   //切换tab,个人赛分类
   clickTab:function(e) {
 
-      //const {current} = e.currentTarget.dataset;
-      // const {currentTab} = this.data;
-
-      // if (currentTab === current) {
-      //   return false;
-      // } else {
-      //   let isTime  = sepcTime.CHAMPION_RES_TIME - new Date().getTime() 
-      //   isTime = isTime <= 0 ? true : false 
-
-      //   this.setData({
-      //     currentTab: current,
-      //     isChampionResTime : isTime
-      //   })
-      // }
-
-      debugger
       const {current} = e.currentTarget.dataset;
       const url = current == 0 ? '../groupMatches/groupMatches' : (current == 1 ? '../champion/champion' : '../eliminate/eliminate') 
       wx.navigateTo({
@@ -145,14 +125,17 @@ Page({
   voteChampion:function(e){
 
     const {teamid} = e.currentTarget.dataset;
+
+    //param
     const data = {
         team_id : teamid,
         user_id : 'lynasliu'
     }
-    
+    const url  = `${Host.service}/InsertChampion`
+
     wx.request({
 
-      url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/InsertChampion',
+      url,
       method : 'post',
       data,
       success: (res)=> {
@@ -162,14 +145,14 @@ Page({
               selectChampion: teamid
             })
             wx.showToast({  
-              title: '成功',  //标题  
-              icon: 'success',  //图标，支持"success"、"loading"  
+              title: '成功',    
+              icon: 'fali',  //图标，支持"success"、"loading"  
               mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
             }) 
         }else{
             wx.showToast({  
-              title: '投票失败',  //标题  
-              icon: 'success',  //图标，支持"success"、"loading"  
+              title: '投票失败',  
+              icon: 'fail',  //图标，支持"success"、"loading"  
               mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
             }) 
         }
