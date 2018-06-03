@@ -9,11 +9,7 @@ const sepcTime = require("../../../config/specTimeConfig");
 
 Page({
   data: {
-    navigateList: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-    currentTab: 1,
-    subCurrentTab : 'A',
-    quizRes : {},
-    forecastScore : 0,
+    currentTab: 2,
     groupListData : [],
     selectData: {},
     championData : [],
@@ -73,19 +69,10 @@ Page({
   clickTab:function(e) {
 
       const {current} = e.currentTarget.dataset;
-      const {currentTab} = this.data;
-
-      if (currentTab === current) {
-        return false;
-      } else {
-        let isTime  = sepcTime.CHAMPION_RES_TIME - new Date().getTime() 
-        isTime = isTime <= 0 ? true : false 
-
-        this.setData({
-          currentTab: current,
-          isChampionResTime : isTime
-        })
-      }
+      const url = current == 0 ? '../groupMatches/groupMatches' : (current == 1 ? '../champion/champion' : '../eliminate/eliminate') 
+      wx.navigateTo({
+        url
+      })
   },
   //切换subtab
   clickSubTab:function(e) {
