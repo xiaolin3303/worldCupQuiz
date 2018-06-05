@@ -1,3 +1,12 @@
+.topic-wrapper{
+	background : #21653c;
+}
+.topic-wrapper .tip{
+	color:#fff;
+	font-size:11px;
+	text-align:center;
+	margin-top:10px;
+}
 .topic-list {
 	padding: 20rpx 30rpx;
 }
@@ -37,6 +46,10 @@
 	box-sizing: border-box;
 	text-indent: 30rpx;
 	margin-top: 30rpx;
+}
+
+.answer-list .option.selected {
+	background: #f7c83a;
 }
 
 .group-info{

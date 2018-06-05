@@ -1,42 +1,27 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+.container {
+	height: 100%;
+	background: #17492e;
 }
-.log-item {
-  margin: 10rpx;
-}
-.personal,.leaderboard{
-	background : #efafaf;
-	padding : 20px 70px;
-	margin-top :30px;
-	 display: flex;
-  	flex-direction: column;
-  	align-items: center;
-  	color :#fff;
 
-}	
-.leaderboard{
-	background : #ecefaf;
+.entry-container {
+	position: absolute;
+	width: 100%;
+	top: 600rpx;
+	text-align: center;
 }
-.group{
-	background : #afefc7;
-	padding : 20px 50px;
-	
+.entry-btn {
+	width: 407rpx;
+	height: 101rpx;
 }
-.background{
-	height : 190px;
+.banner {
+	width: 100%;
+	height: 600rpx;
 }
-.boy{
-	width :40px;
-	height :40px;
 
+.mt50 {
+	margin-top: 50rpx;
 }
-.placeholder{
-	width :40px;
-	height :40px;
-
-}
-.bottom-content{
-	margin-top : 20px;
+image{
+	width : 100%;
+	height : 100%;
 }

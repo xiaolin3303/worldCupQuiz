@@ -6,7 +6,6 @@
     "pages/personal/champion/champion",
     "pages/personal/eliminate/eliminate",
     "pages/group/index/index",
-    "pages/group/join/join",
     "pages/group/arenalist/arenalist",
     "pages/group/topic/topic"
   ],

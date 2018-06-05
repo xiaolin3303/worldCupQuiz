@@ -103,3 +103,15 @@ page {
 	text-overflow:ellipsis;
 	overflow: hidden;
 }
+.fixed {
+	position : fixed ;
+	bottom : 0px;
+	width:100%;
+
+}
+.tip{
+	color:#fff;
+	font-size:11px;
+	text-align:center;
+	margin-top:10px;
+}

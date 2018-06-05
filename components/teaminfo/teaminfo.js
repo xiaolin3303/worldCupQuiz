@@ -4,9 +4,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    teamName: {
-      type: String,
-      value: '-'
+    teamInfo: {
+      type: Object,
+      value: {}
     }
   },
 

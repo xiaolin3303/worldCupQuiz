@@ -16,7 +16,7 @@
 	</view>
 	<view class="box" >
 	  <view class="item" wx:for="{{group.answerlist}}" wx:for-index="i" wx:for-item="answer" wx:key="answer">
-	    <view class="frist-victory select-btn {{answerId === answer.answer_id ? 'res-active' : ''}}">
+	    <view class="frist-victory select-btn {{answerId === answer.answer_id ? 'res-active' : ''}}" bindtap="_selectAnswer" data-answer_id="{{answer.answer_id}}">
 	      <view>{{answer.answe_describe}}</view>
 	      <view>{{answer.odd}}</view>
 	    </view>

@@ -2,29 +2,16 @@
 <view class="component-teaminfo">
 	<view class="group-info mt40">
 	  <view class="group-name tac">
-	      {{ teamName }}
+	      {{ teamInfo[0].groupName }}
 	  </view>
 	  <view class="user-info-wrapper">   
-	    <view class="userinfo">
+	    <view class="userinfo" wx:for="{{teamInfo[1]}}" wx:for-item="teamInfoItem" wx:key="teamInfoIndex">
+        <view class="captain"
+          wx:if="{{ teamInfo[0].groupLeader === teamInfoItem.userId }}">队长</view>
 	      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-	      <view class="mt20 ft25">xuxu</view>
-	      <view class="mt20 ft25">100</view>       
-	    </view>  
-	    <view class="userinfo">
-	      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-	      <view class="mt20 ft25">xuxu</view>
-	      <view class="mt20 ft25">100</view>       
-	    </view>  
-	    <view class="userinfo">
-	      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-	      <view class="mt20 ft25">xuxu</view>
-	      <view class="mt20 ft25">100</view>       
-	    </view>  
-	    <view class="userinfo">
-	      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-	      <view class="mt20 ft25">xuxu</view>
-	      <view class="mt20 ft25">100</view>       
-	    </view>  
+	      <view class="mt20 ft25">{{teamInfoItem.userId}}</view>
+	      <view class="mt20 ft25">{{teamInfoItem.score}}</view>       
+	    </view>
 	  </view>    
 	</view>
 	<view class="tac score ">总积分:0</view>

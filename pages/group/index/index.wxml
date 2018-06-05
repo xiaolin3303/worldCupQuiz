@@ -1,38 +1,46 @@
 <!--personal.wxml-->
-<view class="container ft30">
-  <image src="/assets/team-banner.png" class="banner"></image>
-  <view class="create-name-wrapper row middle">
-    <view class="col">
+<view class="group-index-wrapper ft30">
+  <image src="/assets/head.jpg" class="banner"></image>
+  <view class="create-name-wrapper">
+    <view class=" row middle {{groupId? 'none' : ''}}">
+    <view class="col " >
       <input class="name-input mr30" placeholder-class="name-inputp-tip" placeholder="为队伍起名(不超过5字符)" bindinput="createGroupName" />
     </view>
     <view class="col-auto fcstress" bindtap="confirmGroupName">确定</view> 
   </view>
-  <view class="groupeer-list">
-    <view class="userinfo">
-      <view class="captain">队长</view>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <view><text class="userinfo-nickname fcwhite">{{userInfo.nickname}}</text></view>
-    </view>
-    <view class="userinfo">
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <view> <text class="userinfo-nickname">{{userInfo.nickname}}</text></view>
-    </view>
-    <view class="userinfo">
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <view> <text class="userinfo-nickname">{{userInfo.nickName}}</text></view>
-     
-    </view>
-        <view class="userinfo">
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <view> <text class="userinfo-nickname">{{userInfo.nickName}}</text></view>
-     
+
+  <view class="tac  mt20 ft40 fwbold fcwhite {{!groupId? 'none' : ''}}">
+      {{groupName}}
+  </view>
+  <view class="groupeer-list" >
+    <view class="userinfo"  wx:for="{{teamList}}" wx:for-index="index" wx:for-item="number" wx:key="number">
+
+      <view class="captain {{teamBase.groupLeader == number.userId ? '' : 'none'}}">队长</view>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{number.userAvatar}}" mode="cover"></image>
+      <view><text class="userinfo-nickname fcwhite">{{number.userId}}</text></view>
     </view>
 
   </view>
   <view class="btn-wrapper">
-    <view class="invite-btn" bindtap="createGroup">邀请好友</view>
+    <view
+      class="invite-btn {{buttonCnt === 'invite' ? '':'none'}}"
+      bindtap = "inviteFriends">
+        邀请好友
+    </view>
+    <view
+      class="invite-btn {{buttonCnt === 'join' ? '':'none'}}"
+      bindtap = "confirmJoinGroup">
+        确认加入
+    </view>
+        <view
+      class="invite-btn {{buttonCnt === 'goanena' ? '':'none'}}"
+      bindtap = "gotoAnera">
+        加入战场
+    </view>
   </view>
   <view class="fcwhite ft30 tac mt40">6月14日前完成组队，6月15日开始进入战场</view>
+  </view>
+
 </view>
 
 <view class="tip-cover {{hasCover ? '' : 'none'}}" >

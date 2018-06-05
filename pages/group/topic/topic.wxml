@@ -18,60 +18,34 @@
       <view class="ft25">竞猜中</view>
     </view>
   </view>
+  <view class="tip">以下为淘汰题，答对继续积分，答错则无法继续闯关</view>
   <view class="matchinfo-wrapper mt40">
     <matchinfo
       group="{{matchInfo}}"
-      answerId="{{1}}"
+      answerId="{{matchInfo.selectAnswerId}}"
       forecastScore="{{10}}"
+      bind:selectAnswer="selectMatchAnswer"
     >
     </matchinfo>
   </view>
+
+  <view class="tip">以下为积分题，答对累计积分，答错则无法继续闯关</view>
   <view class="topic-list"> 
-      <view class="topic-item ft30">
-        <view class="topic">1.在哥伦比亚对塞尔维亚的比赛中，哥伦比亚队将进几个球</view>
+      <view class="topic-item ft30" wx:for="{{pList}}" wx:for-index="index" wx:for-item="list" wx:key="list">
+        <view class="topic">{{index+1}}.{{list.itemDescribe}}</view>
         <view class="answer-list">
-          <view class="option">A.1个</view>
-          <view class="option">B.2个</view>
-          <view class="option">C.4个</view>
+          <view class="option {{ answer.answer_id === list.selectAnswerId ? 'selected' : ''}}" wx:for="{{list.answerSummary}}" wx:for-index="i" wx:for-item="answer" wx:key="answer" bindtap="selectPList" data-answer_id="{{answer.answer_id}}" data-item_id="{{list.itemId}}">{{answer.value}}</view>
         </view>
       </view>
   </view>
   <view class="tac mt40">
-    <view class="submit-btn">提交答案</view>
+    <view class="submit-btn" bindtap="submitAnswer">提交答案</view>
   </view>
-  <view class="mt40">
+  <view class="mt40 ">
     <teaminfo
-      teamName="渣渣薇宝队"
+      teamInfo="{{teamInfo}}"
     >
     </teaminfo>
   </view>
-  <!-- <view class="group-info mt40">
-    <view class="group-name tac">
-        战无不胜队
-    </view>
-    <view class="user-info-wrapper">   
-      <view class="userinfo">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <view class="mt20 ft25">xuxu</view>
-        <view class="mt20 ft25">100</view>       
-      </view>  
-      <view class="userinfo">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <view class="mt20 ft25">xuxu</view>
-        <view class="mt20 ft25">100</view>       
-      </view>  
-      <view class="userinfo">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <view class="mt20 ft25">xuxu</view>
-        <view class="mt20 ft25">100</view>       
-      </view>  
-      <view class="userinfo">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <view class="mt20 ft25">xuxu</view>
-        <view class="mt20 ft25">100</view>       
-      </view>  
-    </view>    
-  </view>
-  <view class="tac score">总积分:0</view> -->
 </view>
 

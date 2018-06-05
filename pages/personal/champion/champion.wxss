@@ -101,26 +101,12 @@ swiper{
 	font-size: 14px;
 }
 
-.icon.vs {
-	width: 26px;
-	height: 20px;
-}
 .icon.national-flag{
 	width:20px;
 	height:14px;
 	position:relative;
-	bottom:1px;
-
-}
-.icon.flag-right{
-	left : 5px;
-}
-.icon.flag-left{
-	right : 5px;
-}
-.icon.warning {
-	width: 4px;
-	height: 12px;
+	bottom:-26rpx;
+	left:-13rpx;
 }
 
 .group-match-list .match .tip {
@@ -292,6 +278,9 @@ swiper{
 	height: 60rpx;
 	border-radius: 100%;
 	background: #eee;
+}
+.champion-name{
+	justify-content:center;
 }
 
 

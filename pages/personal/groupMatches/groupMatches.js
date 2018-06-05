@@ -9,75 +9,81 @@ const sepcTime = require("../../../config/specTimeConfig");
 const Host = require("../../../config/host.config"); 
 
 Page({
+
   data: {
     currentTab: 0,
     quizRes : {},
     forecastScore : 0,
     groupListData : [],
     selectData: {},
-    championData : [],
-    selectChampion: null,
-    isChampionResTime : false,
-    totalScore: 0
+    totalScore: 0,
+    myAnwser : '',
+    isCorrect : ''
   },
+
+  globalData: {
+    groupListData: []
+  },
+
   onLoad:function(e) {
 
-    const url = `${Host.service}/GetBetList?`  ; 
-    wx.request({
+    if(this.globalData.groupListData.length === 0 ){
 
-      url,
-      method : 'get',
-      data : {
-          username : 'lynasliu'
-      },
-      success: (res)=> {
-          if(res.data.ret == -102){
-              wx.showToast({  
-                title: '您没有权限，请联系管理员开通',  //标题  
-                width : 200,
-                icon: 'success',  //图标，支持"success"、"loading"  
-                mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
-              })  
-          }
-          this.setData({
-            groupListData : res.data.data.map(group => Object.assign({}, group, {
-              isLock: typeof group.player_answer_id === 'number'
-            })),
-            championData : championList.data
-          })
-      }
-    })
+      const url = `${Host.service}/GetBetList?`  ; 
+      wx.request({
 
-  },
+        url,
+        method : 'get',
+        data : {
+            username : 'lynasliu'
+        },
+        success: (res)=> {
+          
+            if(res.data.ret == -102){
+                wx.showToast({  
+                  title: '您没有权限，请联系管理员开通',  //标题  
+                  width : 200,
+                  icon: 'success',  //图标，支持"success"、"loading"  
+                  mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+                })  
+            }
+            const groupRes = res.data.data.map(group => Object.assign({}, group, {
+                isLock:  group.player_answer_id == '-1'
+            }))
 
-  onShareAppMessage: function () {
-    return {
-      title: '微信小程序联盟',
-      desc: '最具人气的小程序开发联盟!',
-      path: '/pages/personal/index/index'
+            this.setData({
+              groupListData : groupRes
+            })
+
+            this.globalData.groupListData = groupRes;
+        }
+      })
+    }else{
+
+        const {groupListData} = this.globalData;
+
+        this.setData({
+            groupListData
+        })
     }
-  },
-
-  championSelect: function (e) {
-    const { championid } = e.currentTarget.dataset;
-    this.setData({
-      selectChampion: championid
-    })
 
   },
+
   //切换tab,个人赛分类
-  clickTab:function(e) {
+  switchTab:function(e) {
 
-      const {current} = e.currentTarget.dataset;
+      const { currenttab: current } = e.detail;
       const url = current == 0 ? '../groupMatches/groupMatches' : (current == 1 ? '../champion/champion' : '../eliminate/eliminate') 
-      wx.navigateTo({
+      wx.redirectTo({
         url
       })
   },
 
   handleQuizResult:function(e) {
+
       const { odds, itemid, answerid, lockanswer } = e.currentTarget.dataset;
-      if (lockanswer === true) {
+
+      if (lockanswer) {
         return
       }
 
@@ -120,47 +126,50 @@ Page({
           return item 
       });
 
-
   },
-  voteChampion:function(e){
+  intelligentSelect:function(e){
 
-    const {teamid} = e.currentTarget.dataset;
+      const url = `${Host.service}/GetIntellRst?`; 
+      wx.request({
+        url,
+        method : 'get',
+        data : {
+            username : 'lynasliu'
+        },
+        success: (res)=> {
 
-    //param
-    const data = {
-        team_id : teamid,
-        user_id : 'lynasliu'
-    }
-    const url  = `${Host.service}/InsertChampion`
+            if(res.data.ret == -102){
 
-    wx.request({
+                wx.showToast({  
+                  title: '您没有权限，请联系管理员开通',  //标题  
+                  width : 200,
+                  icon: 'success',  //图标，支持"success"、"loading"  
+                  mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
+                })  
+            }
 
-      url,
-      method : 'post',
-      data,
-      success: (res)=> {
+            const intellRst = res.data.data;
+            
+            const groupRes = this.globalData.groupListData.map(group => {
+                    
+                intellRst.map((intellItem) => {
 
-        if(res.ret != -1){
-            this.setData({
-              selectChampion: teamid
+                  const {item_id,answer_id} = intellItem;
+                  if(group.item_id == item_id){
+                      group.player_answer_id = answer_id
+                  }
+
+                }) 
+                return group
+
             })
-            wx.showToast({  
-              title: '成功',    
-              icon: 'fali',  //图标，支持"success"、"loading"  
-              mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
-            }) 
-        }else{
-            wx.showToast({  
-              title: '投票失败',  
-              icon: 'fail',  //图标，支持"success"、"loading"  
-              mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
-            }) 
+
+
+            this.setData({
+              groupListData:groupRes
+            });
         }
-
-
-      }
-    })
- 
+      })
   }
 
 })

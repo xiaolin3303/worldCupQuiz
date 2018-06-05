@@ -1,5 +1,7 @@
 .arenalist-wrapper{
 	padding : 30rpx;
+	background : #21653c;
+
 }
 .arena-list{
 	display : flex;

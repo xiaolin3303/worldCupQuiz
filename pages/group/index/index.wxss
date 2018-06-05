@@ -1,13 +1,19 @@
-.container {
-	background: #1d3a9d;
+.group-index-wrapper {
+	background: #0d441c;
+	width: 100%;
+	height: 100%;
 }
 
 .banner {
-	width: 750rpx;
-	height: 568rpx;
-}
+	width: 100%;
+	height: 100%;
+	position:relative;
+	top:-54px;
+
+}	
 
 .create-name-wrapper {
+	position :absolute;
 	margin: 80rpx 50rpx 50rpx 50rpx;
 }
 
@@ -112,4 +118,7 @@
 	position:absolute;
 	top:0px;
 	
+}
+.invite-btn.none{
+	display : none ;
 }

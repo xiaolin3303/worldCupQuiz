@@ -29,6 +29,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    _selectAnswer: function (e) {
+      const { answer_id } = e.currentTarget.dataset;
+      this.triggerEvent("selectAnswer", { answer_id })
+    }
   }
 })

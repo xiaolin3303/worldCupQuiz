@@ -19,8 +19,9 @@ App({
               code: res.code
             },
             success: function(res) {
-              console.log('login', res);
+
               me.globalData.rtxUserInfo = res.data;
+
               if (me.userInfoReadyCallback) {
                 me.userInfoReadyCallback(res.data)
               }

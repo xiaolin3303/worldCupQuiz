@@ -19,23 +19,18 @@ Page({
   },
   onLoad:function(e) {
 
-    //  this.setData({
-    //   groupListData : testData.data,
-    //   championData : championList.data
-    // })
-
     wx.request({
 
       url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetBetList?username=lynasliu',
       method : 'get',
-      success: (res)=> {
+      success: (res) => {
         if(res.data.ret == -102){
             wx.showToast({  
               title: '您没有权限，请联系管理员开通',  //标题  
               width : 200,
               icon: 'success',  //图标，支持"success"、"loading"  
               mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
-            })  
+          })  
         }
         // res.data.data[0].player_answer_id = 1;
         // res.data.data[1].player_answer_id = null;
@@ -63,36 +58,24 @@ Page({
     this.setData({
       selectChampion: championid
     })
-
   },
+
   //切换tab,个人赛分类
-  clickTab:function(e) {
+  switchTab:function(e) {
 
-      const {current} = e.currentTarget.dataset;
+      const { currenttab: current } = e.detail;
       const url = current == 0 ? '../groupMatches/groupMatches' : (current == 1 ? '../champion/champion' : '../eliminate/eliminate') 
-      wx.navigateTo({
+      wx.redirectTo({
         url
-      })
-  },
-  //切换subtab
-  clickSubTab:function(e) {
-      const { subtab } = e.currentTarget.dataset;
-      this.setData({
-        subCurrentTab: subtab
       })
   },
 
   handleQuizResult:function(e) {
+
       const { odds, itemid, answerid, lockanswer } = e.currentTarget.dataset;
       if (lockanswer === true) {
         return
       }
-
-      // const selectItem = {
-      //     itemid,
-      //     answerid 
-      // }
-      //todo  只记录itemid相同的最后一项
 
       // this.data.selectData.push(selectItem);
       let quizres = Object.assign({}, this.data.quizRes, {

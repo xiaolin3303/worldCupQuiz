@@ -204,27 +204,6 @@ swiper{
 	height: 120rpx;
 	line-height: 120rpx;
 }
-.champion-match-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px;
-}
-.champion-match {
-	width : 50%;
-	box-sizing: border-box;
-	padding: 10px;
-}
-.champion-match .box {
-	text-align:center;
-	border-radius: 8px;
-	background: #fff;
-	padding-top: 5px;
-}
-.champion-match .item{	
-	border-radius: 10px;
-	height : 100%;
-}
 .item-group {
 	position:relative;
 	top:-10px;
@@ -236,65 +215,23 @@ swiper{
 	color:#fff;
 }
 
-.champion-match .vote-count{	
-	font-size: 16px;
-	color: #ed3829;
-}
-
-.champion-match.selected .vote-champion {
-	background: #f7c83b;
-}
-.champion-country,.vote-champion{
-	font-size : 15px;
-	margin-top :10px;
-
-}
 .deadline{
 	color : #fff;
 	font-size : 12px;
 	margin-top : 10px;
 	text-align : center;
 }
-.vote-champion{
-	background : #edeef2;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	position :relative ;
-	bottom : 0px;
-	height : 35px;
-	line-height : 35px;
+.correct{
+	background : #33bb62;
+	color : #fff;
+}
+.wrong{
+	background : #ed3829;
+	color : #fff;
 }
 
-.champion-wrapper .result-background {
-	width: 710rpx;
-	height: 305rpx;
-	margin: 30rpx 20rpx;
-}
 
-.champion-wrapper .user-list {
-	margin: 20rpx;
-	padding: 20rpx 50rpx;
-	background: white;
-	border-radius: 10rpx;
-}
 
-.champion-wrapper .user-list .list {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.champion-wrapper .user-list .list .user {
-	width: 50%;
-	margin-top: 20rpx;
-	font-size: 14px;
-}
-
-.champion-wrapper .user-list .list .user .avatar {
-	width: 60rpx;
-	height: 60rpx;
-	border-radius: 100%;
-	background: #eee;
-}
 
 
 

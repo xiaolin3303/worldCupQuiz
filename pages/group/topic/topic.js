@@ -1,65 +1,132 @@
 
 //index.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
+const Host = require("../../../config/host.config"); 
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    matchInfo: {"answerlist":[{"answe_describe":"胜利","answer_id":1,"is_correct":0,"odd":"1"},{"answe_describe":"平局","answer_id":99,"is_correct":0,"odd":"1"},{"answe_describe":"胜利","answer_id":2,"is_correct":0,"odd":"1"}],"ban_time":"2018-06-14 23:00:00","game_num":"1","group_id":"A组","item_describe":"","item_id":101,"player_answer_id":0,"team_id1":1,"team_id2":2,"team_name1":"俄罗斯","team_name2":"沙特阿拉伯","team_url1":"http://yyb.gtimg.com/fibadcms_img/adcms/faa31612dfaec9232b57ecbb1119fdd91527735180011601.png","team_url2":"http://yyb.gtimg.com/fibadcms_img/adcms/06d4c9a5463ddbf11008ed5ab8882d501527735217763204.png"}
-  },
-  //事件处理函数
-  bindVote: function() {
-
-    wx.showToast({
-        title: '成功',
-        icon: 'succes',
-        duration: 1000,
-        mask:true
-    })
-  },
-  onShareAppMessage: function () {
-    return {
-      title: '微信小程序联盟',
-      desc: '最具人气的小程序开发联盟!',
-      path: '/pages/personal/index/index'
+    matchInfo: {},
+    pList : [],
+    teamInfo : [],
+    answerList : {
+      'selectAnswerId': -1
     }
   },
 
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+
+    const betUrl = `${Host.service}/GetGroupBetList`;
+    wx.request({
+      url : betUrl,
+      method : 'get',
+      data :{
+        roundsId: 1,
+        battleId: 1  
+      },
+      header: { 
+        'content-type': 'application/x-www-form-urlencoded'
+      }, 
+      success: (res)=> {
+
+        //此处数据最好是后端处理，但是后端没有时间；
+        const blist  = res.data.data.bList;
+        const pList = res.data.data.qList.map(item => {
+          let answerSummary = Object.keys(item.answerSummary).map(key => ({
+            answer_id: +key,
+            value: item.answerSummary[key]
+          }))
+          return Object.assign({}, item, {
+            selectAnswerId: -1,
+            answerSummary
+          })
+        });
+
+        console.log(pList)
+        let matchInfo = {}
+
+        blist.map( item => {
+
+          let answerlist = [];
+          Object.keys(item.answerSummary).map(key => {
+
+              const answer = {
+                  answe_describe : item.answerSummary[key],
+                  answer_id : +key
+              }
+              answerlist.push(answer);
+
+          });
+
+          matchInfo = {
+              answerlist,
+              itemId: item.itemId,
+              team_name1 : item.team1,
+              team_name2 : item.team2,
+              group_id : item.scheduleGroup,
+              selectAnswerId: -1
+          }
+        })
+
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          matchInfo,
+          pList,
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+    })
+
+    const groupUrl = `${Host.service}/GetGroupInfo`;
+
+    wx.request({
+      url : groupUrl,
+      method: 'get',
+      data: {
+        userId: 'carlsonlin',
+        battleId: 0
+      },
+      success: (res) => {
+        if (res.data.ret == -102) {
+          wx.showToast({
+            title: '您没有权限，请联系管理员开通',  //标题  
+            width: 200,
+            icon: 'success',  //图标，支持"success"、"loading"  
+            mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
           })
         }
-      })
-    }
+
+        this.setData({
+          teamInfo: res.data.data
+        })
+      }
+    })
+  },
+
+  selectMatchAnswer: function (e) {
+    const { answer_id } = e.detail;
+    let matchInfo = Object.assign({}, this.data.matchInfo, {
+      selectAnswerId: answer_id
+    })
+
+    this.setData({ matchInfo })
+  },
+
+  selectPList: function (e) {
+    const { answer_id, item_id } = e.currentTarget.dataset;
+    let pList = this.data.pList.map(item => {
+      if (item.itemId === item_id) {
+        return Object.assign({}, item, {
+          selectAnswerId: +answer_id
+        })
+      } else {
+        return item
+      }
+    })
+
+    this.setData({ pList })
   },
 
   getUserInfo: function(e) {
-    console.log(e)
+
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -70,6 +137,46 @@ Page({
   createGroup: function(e){
     wx.navigateTo({
       url: '../join/join'
+    })
+  },
+  submitAnswer:function(e){
+    const { matchInfo, pList } = this.data
+    let answerList = [{
+      itemId: +matchInfo.itemId,
+      answerId: +matchInfo.selectAnswerId,
+      type: 0
+    }];
+
+    pList.forEach(item => {
+      answerList.push({
+        itemId: +item.itemId,
+        answerId: +item.selectAnswerId,
+        type: 1
+      })
+    });
+    const data = {
+      groupId : '9119',
+      battleId : 0,
+      userId : 'viinyxu',
+      // answerList :JSON.stringify({ answerList: [       
+      //     {"itemId":1, "answerId":0, "type":0},       
+      //     {"itemId":2, "answerId":0, "type":1},       
+      //     {"itemId":3, "answerId":0, "type":1}     
+      // ]})
+      answerList: JSON.stringify({ answerList })
+    }
+    const url = `${Host.service}/GroupMakeBet`
+    wx.request({
+      url ,
+      method: 'post',
+      header: { 
+        'content-type': 'application/x-www-form-urlencoded'
+      }, 
+      data,
+      success: (res) => {
+        console.log('xuxu',res)
+      }
+
     })
   }
 })
