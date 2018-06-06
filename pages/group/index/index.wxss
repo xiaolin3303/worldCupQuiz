@@ -1,12 +1,12 @@
 .group-index-wrapper {
-	background: #0d441c;
+	background: #0f461e;
 	width: 100%;
 	height: 100%;
 }
 
 .banner {
 	width: 100%;
-	height: 100%;
+	height: 1056rpx;
 	position:relative;
 	top:-54px;
 
@@ -14,11 +14,17 @@
 
 .create-name-wrapper {
 	position :absolute;
-	margin: 80rpx 50rpx 50rpx 50rpx;
+	width: 690rpx;
+	left: 25rpx;
+	top: 540rpx;
+	border-radius: 10rpx;
+	background: white;
+	box-sizing: border-box;
+	padding: 35rpx 25rpx;
 }
 
 .name-input {
-	background: #3482ee;
+	background: #e7e7e8;
 	border-radius: 10rpx;
 	font-size: 30rpx;
 	height: 80rpx;
@@ -27,7 +33,7 @@
 }
 
 .name-inputp-tip {
-	color: #333;
+	color: #666;
 }
 
 .tab-item{
@@ -68,7 +74,7 @@
 	width : 100%;
 	margin-top : 40rpx;
 	box-sizing: border-box;
-	padding: 0 80rpx;
+	padding: 0 40rpx;
 	justify-content:center;
 }
 .userinfo{	
@@ -91,13 +97,12 @@
 }
 
 .userinfo-avatar{
-	width : 100rpx;
-	height : 100rpx;
+	width : 105rpx;
+	height : 105rpx;
 	border-radius : 100%;
-	border: 1px solid white;
 }
 .btn-wrapper{
-	margin-top : 60rpx;
+	margin-top : 30rpx;
 	text-align: center;
 }
 .btn-wrapper .invite-btn {
@@ -105,10 +110,11 @@
 	height: 85rpx;
 	text-align: center;
 	display: inline-block;
-	font-size: 40rpx;
+	font-size: 35rpx;
 	border-radius: 50rpx;
 	line-height: 85rpx;
-	background: #f7c83b;
+	background: #339a58;
+	color: white;
 }
 .tip-cover{
 	height:100%;
@@ -122,14 +128,15 @@
 .invite-btn.none{
 	display : none ;
 }
+
+.share {
+	width: 600rpx;
+	height: 570rpx;
+	position: absolute;
+	right: 80rpx;
+	top: 40rpx;
+}
 .tip-content {
 	display:flex;
 	justify-content:center
-}
-.share{
-	width:234px;
-	height:225px;
-	position:relative;
-	left:-33px;
-
 }
