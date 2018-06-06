@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/main/main",
     "pages/rank/rank",
     "pages/personal/groupMatches/groupMatches",
@@ -7,12 +7,13 @@
     "pages/personal/eliminate/eliminate",
     "pages/group/index/index",
     "pages/group/arenalist/arenalist",
-    "pages/group/topic/topic"
+    "pages/group/topic/topic",
+    "pages/login/login"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "世界杯竞猜",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }
