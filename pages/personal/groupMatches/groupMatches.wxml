@@ -11,7 +11,10 @@
     <view class="group-match-list">
       <view class="match"  wx:for="{{groupListData}}" wx:for-index="index" wx:for-item="group" wx:key="group">
         <view class="box">
-          <view class="item-group"> {{group.group_id}}</view>
+          <view class="item-group">
+            <view>{{group.group_id}}</view>
+            <view>组</view>
+          </view>
           <view class="item">
             <view class="country">
               <text>{{group.team_name1}}</text>

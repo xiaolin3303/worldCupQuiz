@@ -11,9 +11,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.9",
-	"appid": "wxc0b41f1fc7ed0c9d",
-	"projectname": "worldCupQuiz",
+	"libVersion": "2.0.8",
+	"appid": "wx5f7dbd4d9b3971eb",
+	"projectname": "test",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -33,18 +33,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 7,
 			"list": [
 				{
-					"id": -1,
-					"name": "参加战场",
-					"pathName": "pages/group/join/join",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "战场列表",
-					"pathName": "pages/group/arenalist/arenalist",
+					"id": 0,
+					"name": "personal",
+					"pathName": "pages/personal/groupMatches/groupMatches",
 					"query": ""
 				},
 				{
@@ -54,21 +48,33 @@
 					"query": ""
 				},
 				{
-					"id": 3,
-					"name": "个人赛主页",
-					"pathName": "pages/personal/groupMatches/groupMatches",
+					"id": 2,
+					"name": "group",
+					"pathName": "pages/group/index/index",
+					"query": "group=9115"
+				},
+				{
+					"id": -1,
+					"name": "确认加入界面",
+					"pathName": "pages/group/join/join",
 					"query": ""
 				},
 				{
 					"id": 4,
-					"name": "竞猜主页",
-					"pathName": "pages/main/main",
+					"name": "邀请好友",
+					"pathName": "pages/group/index/index",
+					"query": "groupId=9270"
+				},
+				{
+					"id": -1,
+					"name": "personal",
+					"pathName": "pages/group/topic/topic",
 					"query": ""
 				},
 				{
-					"id": 5,
-					"name": "邀请好友",
-					"pathName": "pages/group/index/index",
+					"id": -1,
+					"name": "战场列表",
+					"pathName": "pages/group/arenalist/arenalist",
 					"query": ""
 				},
 				{

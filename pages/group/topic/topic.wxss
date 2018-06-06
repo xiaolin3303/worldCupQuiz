@@ -11,19 +11,32 @@
 	padding: 20rpx 30rpx;
 }
 
+.topic-list .tip {
+	height: 50rpx;
+	line-height: 50rpx;
+	background: #edeef2;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 20rpx;
+	color: #32bb63;
+	border-bottom-left-radius: 10rpx;
+	border-bottom-right-radius: 10rpx;
+}
+
 
 .arenalist-wrapper{
 	margin-top : 20px;
 }
-.answer-list{
-	display : flex;
-	flex-wrap : wrap;
-}
+
 
 .topic-list .topic-item {
-	background: #e8eaee;
-	padding: 20rpx 30rpx;
+	background: white;
+	padding-top: 30rpx;
 	border-radius: 10rpx;
+}
+
+.topic-item .wrapper {
+	padding: 0 50rpx;
 }
 
 .matchinfo-wrapper {
@@ -42,13 +55,21 @@
 }
 
 .answer-list .option{
-	width : 50%;
 	box-sizing: border-box;
-	text-indent: 30rpx;
-	margin-top: 30rpx;
+	padding: 20rpx;
 }
 
-.answer-list .option.selected {
+.answer-list .option .answer-item {
+	width: 100%;
+	height: 90rpx;
+	line-height: 90rpx;
+	text-align: center;
+	font-size: 30rpx;
+	background: #edeef2;
+	border-radius: 50rpx;
+}
+
+.answer-list .option .answer-item.selected {
 	background: #f7c83a;
 }
 
@@ -69,7 +90,7 @@
 }
 
 .tab .item {
-	background: #2b8b46;
+	background: #39995b;
 	color: white;
 	height: 110rpx;
 	position: relative;

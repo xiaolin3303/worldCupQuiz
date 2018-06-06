@@ -2,7 +2,7 @@
 <view class="group-index-wrapper ft30">
   <image src="/assets/head.jpg" class="banner"></image>
   <view class="create-name-wrapper">
-  <block wx:if="{{!groupId}}">
+  <block wx:if="{{!groupName}}">
     <view class="tac mt20 ft40 fwbold">
       邀请好友组队
     </view>
@@ -15,8 +15,8 @@
     <view class="groupeer-list">
       <view class="userinfo">
         <view class="captain">队长</view>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="" mode="cover"></image>
-        <view><text class="userinfo-nickname">xuxu</text></view>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view><text class="userinfo-nickname">{{username}}</text></view>
       </view>
       <view class="userinfo">
         <image bindtap="bindViewTap" class="userinfo-avatar" src="/assets/default-avatar.png" mode="cover"></image>
@@ -39,8 +39,8 @@
     <view class="groupeer-list" >
       <view class="userinfo"  wx:for="{{teamList}}" wx:for-index="index" wx:for-item="number" wx:key="number">
         <view class="captain {{teamBase.groupLeader == number.userId ? '' : 'none'}}">队长</view>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{number.userAvatar}}" mode="cover"></image>
-        <view><text class="userinfo-nickname fcwhite">{{number.userId}}</text></view>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{number.avatar || '/assets/default-avatar.png'}}" mode="cover"></image>
+        <view><text class="userinfo-nickname">{{number.userId}}</text></view>
       </view>
     </view>
   </block>

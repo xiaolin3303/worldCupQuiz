@@ -33,13 +33,18 @@
   </view>
 
   <view class="tip">以下为积分题，答对累计积分，答错则无法继续闯关</view>
-  <view class="topic-list"> 
-      <view class="topic-item ft30" wx:for="{{pList}}" wx:for-index="index" wx:for-item="list" wx:key="list">
-        <view class="topic">{{index+1}}.{{list.itemDescribe}}</view>
-        <view class="answer-list">
-          <view class="option {{ answer.answer_id === list.selectAnswerId ? 'selected' : ''}}" wx:for="{{list.answerSummary}}" wx:for-index="i" wx:for-item="answer" wx:key="answer" bindtap="selectPList" data-answer_id="{{answer.answer_id}}" data-item_id="{{list.itemId}}">{{answer.value}}</view>
+  <view class="topic-list">
+    <view class="topic-item ft30 mt30" wx:for="{{pList}}" wx:for-index="index" wx:for-item="list" wx:key="list">
+      <view class="wrapper">
+        <view class="topic ft35">{{index+1}}.{{list.itemDescribe}}</view>
+        <view class="answer-list row mt20">
+          <view class="option col" wx:for="{{list.answerSummary}}" wx:for-index="i" wx:for-item="answer" wx:key="answer" bindtap="selectPList" data-answer_id="{{answer.answer_id}}" data-item_id="{{list.itemId}}">
+            <view class="answer-item {{ answer.answer_id === list.selectAnswerId ? 'selected' : ''}}">{{answer.value}}</view>
+          </view>
         </view>
       </view>
+      <view class="mt30 tip">预计得分:10</view>
+    </view>
   </view>
   <view class="tac mt40">
     <view class="submit-btn" bindtap="submitAnswer">提交答案</view>

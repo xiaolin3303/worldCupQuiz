@@ -156,8 +156,8 @@ Page({
       })
     });
     const data = {
-      groupId : '9119',
-      battleId : 0,
+      groupId : '9131',
+      battleId : 1,
       userId : 'viinyxu',
       // answerList :JSON.stringify({ answerList: [       
       //     {"itemId":1, "answerId":0, "type":0},       

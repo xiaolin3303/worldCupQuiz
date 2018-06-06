@@ -55,7 +55,9 @@ page {
 .mt20 {
 	margin-top: 20rpx;
 }
-
+.mt30 {
+	margin-top: 30rpx;
+}
 
 .mt40 {
 	margin-top: 40rpx;

@@ -11,6 +11,8 @@
 
     <image class="entry-btn mt50" src="/assets/rank.png" bindtap="bindViewRank"></image>
 
+    <button  open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+
   </view>
 </view>
 
