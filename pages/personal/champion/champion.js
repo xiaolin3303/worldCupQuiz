@@ -6,6 +6,7 @@ const getData = require("../../../model/dataModel");
 const testData = require("../../../test/testData");
 const championList  = require("../../../test/championList");
 const sepcTime = require("../../../config/specTimeConfig");
+const username = wx.getStorageSync('username')
 
 Page({
   data: {
@@ -22,8 +23,11 @@ Page({
     if(!this.data.isChampionResTime){
       wx.request({
 
-        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetChampionList?username=lynasliu',
+        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetChampionList',
         method : 'get',
+        data:{
+          username
+        },
         success: (res)=> {
           if(res.data.ret == -102){
               wx.showToast({  
@@ -41,8 +45,11 @@ Page({
       })
     }else{
       wx.request({
-        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetChampionRes?user_id=wesperhuang',
+        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetChampionRes',
         method : 'get',
+        data:{
+          user_id : username
+        },
         success: (res)=> {
           if(res.data.ret == -102){
               wx.showToast({  
@@ -61,10 +68,6 @@ Page({
         }
       })
     }
-
-
-
-
   },
 
   championSelect: function (e) {
@@ -89,7 +92,7 @@ Page({
     const {teamid} = e.currentTarget.dataset;
     const data = {
         team_id : teamid,
-        user_id : 'yeehoneliu'
+        user_id : username
     }
 
     wx.request({
@@ -113,7 +116,7 @@ Page({
             }) 
         }else{
             wx.showToast({  
-              title: '投票失败',  //标题  
+              title: res.data.msg,  //标题  
               icon: 'success',  //图标，支持"success"、"loading"  
               mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false  
             }) 

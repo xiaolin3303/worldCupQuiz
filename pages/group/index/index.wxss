@@ -136,3 +136,7 @@
 	right: 80rpx;
 	top: 40rpx;
 }
+.tip-content {
+	display:flex;
+	justify-content:center
+}

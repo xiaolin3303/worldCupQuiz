@@ -3,6 +3,7 @@
 //获取应用实例
 const app = getApp();
 const Host = require("../../../config/host.config"); 
+const username = wx.getStorageSync('username');
 
 Page({
   data: {
@@ -81,7 +82,7 @@ Page({
       url : groupUrl,
       method: 'get',
       data: {
-        userId: 'carlsonlin',
+        userId: username,
         battleId: 0
       },
       success: (res) => {
