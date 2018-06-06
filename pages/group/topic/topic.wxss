@@ -72,7 +72,25 @@
 	background: #2b8b46;
 	color: white;
 	height: 110rpx;
-	border-right: 1rpx solid white;
+	position: relative;
+}
+
+.tab .item.active {
+	background: white;
+	color: #333;
+}
+
+.ml35 {
+	margin-left: 35rpx;
+}
+
+.tab .item .arrow {
+	position: absolute;
+	right: -32rpx;
+	top: 0;
+	width: 35rpx;
+	height: 110rpx;
+	z-index: 100;
 }
 
 .score {

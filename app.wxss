@@ -65,6 +65,10 @@ page {
 	font-size: 25rpx;
 }
 
+.ft20 {
+	font-size: 20rpx;
+}
+
 .vam {
 	vertical-align: middle;
 }
@@ -81,6 +85,10 @@ page {
 	font-size: 30rpx;
 }
 
+.ft35 {
+	font-size: 35rpx;
+}
+
 .fcstress {
 	color: #f7c83b;
 }
@@ -91,6 +99,9 @@ page {
 
 .mr10 {
 	margin-right: 10px;
+}
+.mr20 {
+	margin-right: 20rpx;
 }
 .mr30 {
 	margin-right: 30rpx;

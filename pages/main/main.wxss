@@ -6,7 +6,7 @@
 .entry-container {
 	position: absolute;
 	width: 100%;
-	top: 600rpx;
+	top: 660rpx;
 	text-align: center;
 }
 .entry-btn {
@@ -15,13 +15,11 @@
 }
 .banner {
 	width: 100%;
-	height: 600rpx;
+	height: 902rpx;
+	position: relative;
+	top: -100rpx;
 }
 
 .mt50 {
 	margin-top: 50rpx;
-}
-image{
-	width : 100%;
-	height : 100%;
 }
