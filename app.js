@@ -13,14 +13,16 @@ App({
           //发起网络请求
 
           wx.request({
-            url: 'https://unionguard.3g.qq.com/LoginJsCodeSession',
-            method : 'post',
+            url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/GetRtxByCode',
+            method : 'get',
             data: {
               code: res.code
             },
             success: function(res) {
 
               me.globalData.rtxUserInfo = res.data;
+              wx.setStorageSync('username' , res.data.rtx);
+
 
               if (me.userInfoReadyCallback) {
                 me.userInfoReadyCallback(res.data)
@@ -41,7 +43,6 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              console.log('userInfo', res.userInfo)
               me.globalData.userInfo = res.userInfo
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回

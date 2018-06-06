@@ -3,6 +3,8 @@
 const app = getApp();
 const getData = require("../../../model/dataModel");
 const Host = require("../../../config/host.config"); 
+const username = wx.getStorageSync('username');
+const sepcTime = require("../../../config/specTimeConfig");
 
 Page({
   data: {
@@ -13,7 +15,8 @@ Page({
     userInfo: null,
     groupName : '',
     groupId : null,
-    buttonCnt :"invite"
+    buttonCnt :"invite",
+    isStartTime : +new Date() > sepcTime.GOURP_START_TIME,
   },
   //事件处理函数
   bindVote: function() {
@@ -64,17 +67,14 @@ Page({
 
     if(opt.groupId){
 
-       this.setData({
-          buttonCnt : 'join',
-          groupId : opt.groupId
-       })
+
 
       const url = `${Host.service}/GetGroupInfo`;
       wx.request({
         url,
         method: 'get',
         data: {
-          userId: 'viinyxu',
+          userId: username,
           battleId: 0
         },
         success: (res) => {
@@ -99,6 +99,23 @@ Page({
                userAvatar: this.data.userInfo.avatarUrl
             })
             teamList.length = 4 ;
+
+            this.setData({
+                buttonCnt : 'join',
+                groupId : opt.groupId
+             })
+          }else if(teamList.length == 4){
+              if(isStartTime){
+                this.setData({
+                  buttonCnt : 'goanena',
+                  groupId : opt.groupId
+               }) 
+              }else{
+              this.setData({
+                  buttonCnt : '',
+                  groupId : opt.groupId
+               }) 
+              }
           }
 
           let teamBase = res.data.data[0];
@@ -185,12 +202,12 @@ Page({
   confirmJoinGroup: function(e){
 
     const data = {
-      groupId : '9119',
-      userId : 'monkeytao'
+      groupId : this.data.groupId,
+      userId : username
     }
 
     wx.request({
-        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/joinGroup?username=lynasliu',
+        url: 'https://yybopworldcup2018147.sparta.html5.qq.com/ajax/joinGroup',
         method : 'post',
         header: { 
           'content-type': 'application/x-www-form-urlencoded'

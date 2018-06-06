@@ -7,6 +7,7 @@ const testData = require("../../../test/testData");
 const championList  = require("../../../test/championList");
 const sepcTime = require("../../../config/specTimeConfig");
 const Host = require("../../../config/host.config"); 
+const username = wx.getStorageSync('username');
 
 Page({
 
@@ -35,7 +36,7 @@ Page({
         url,
         method : 'get',
         data : {
-            username : 'lynasliu'
+            username,
         },
         success: (res)=> {
           
@@ -134,7 +135,7 @@ Page({
         url,
         method : 'get',
         data : {
-            username : 'lynasliu'
+            username
         },
         success: (res)=> {
 

@@ -122,3 +122,14 @@
 .invite-btn.none{
 	display : none ;
 }
+.tip-content {
+	display:flex;
+	justify-content:center
+}
+.share{
+	width:234px;
+	height:225px;
+	position:relative;
+	left:-33px;
+
+}

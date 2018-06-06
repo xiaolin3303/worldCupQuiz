@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const Host = require("../../../config/host.config");
+const username = wx.getStorageSync('username');
 const app = getApp()
 
 Page({
@@ -34,7 +35,7 @@ Page({
       url,
       method: 'get',
       data: {
-        userId: 'carlsonlin',
+        userId: username,
         battleId: 0
       },
       success: (res) => {
