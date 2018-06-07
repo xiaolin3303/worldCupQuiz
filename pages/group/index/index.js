@@ -20,6 +20,8 @@ Page({
     groupId : null,
     buttonCnt :"invite",
     username,
+    groupLeader: '',
+    isGroupLeader: '',
     isStartTime : +new Date() > sepcTime.GOURP_START_TIME,
   },
   //事件处理函数
@@ -37,25 +39,18 @@ Page({
     return {
       title: '世界杯竞猜',
       desc: '最具人气的小程序开发联盟!',
-      path: `/pages/group/index/index?groupId=${this.data.groupId}`
+      path: `/pages/group/index/index?groupId=${this.data.groupId}&groupName=${this.data.groupName}`
     }
   },
 
   onLoad: function (opt) {
-    console.log('userInfo', userInfo)
-    const { groupId } = opt
-    console.log('onLoad', opt)
-    wx.showToast({
-      title: opt.groupId,  //标题  
-      width: 200,
-      icon: 'success', 
-      mask: false,  
-    })
 
-    this.getGroupInfo(groupId);
+    const { groupId,groupName } = opt
+
+    this.getGroupInfo(groupId,groupName);
   },
 
-  getGroupInfo:function(groupId){
+  getGroupInfo:function(groupId,groupLeader){
     let params = {
       userId: username,
       battleId: 0
@@ -91,12 +86,14 @@ Page({
 
           if(teamList.length < 4){
 
-            teamList.push({
-               userId :  username,
-               avatar : userInfo.avatarUrl
-            })
+            const filterUser = teamList.filter(user => user.userId === username)
+            if (!filterUser.length) {
+                 teamList.push({
+                   userId :  username,
+                   avatar : userInfo.avatarUrl
+                })
+            }
 
-            console.log('teamList' ,teamList)
             teamList.length = 4 ;
             buttonCnt = 'join' ;
 
@@ -112,9 +109,13 @@ Page({
               buttonCnt = ''
           }
           let teamBase = res.data && res.data.data[0];
+          let isGroupLeader = (teamBase.groupLeader == username)
+
           this.setData({
             groupName : teamBase.groupName,
             groupId : teamBase.groupId,
+            isGroupLeader ,
+            groupLeader,
             teamList,
             teamBase,
             buttonCnt
@@ -182,6 +183,8 @@ Page({
               groupName,
               groupId
             })
+
+            this.getGroupInfo(groupId)
           }else{
             wx.showToast({  
               title: res.msg || '创建队伍失败',  //标题  
@@ -233,5 +236,11 @@ Page({
     wx.navigateTo({
       url: '../arenalist/arenalist'
     })
+  },
+  hideCover:function(e){
+
+      this.setData({
+        hasCover : false
+      })
   }
 })

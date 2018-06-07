@@ -108,7 +108,7 @@
 	width : 100rpx;
 	height : 100rpx;
 	border: 4rpx solid #ececec;
-	borer-radius: 100%;
+	border-radius: 100%;
 	margin: 0 auto;
 }
 .total-score{
