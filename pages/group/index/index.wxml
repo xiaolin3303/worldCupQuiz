@@ -1,6 +1,7 @@
 <!--personal.wxml-->
 <view class="group-index-wrapper ft30">
   <image src="/assets/head.jpg" class="banner"></image>
+  <view class="instruction fwhite">玩法介绍及奖品 ></view>
   <view class="create-name-wrapper">
   <block wx:if="{{!groupName}}">
     <view class="tac mt20 ft40 fwbold">
@@ -10,7 +11,7 @@
       <view class="col">
         <input class="name-input mr20" placeholder-class="name-inputp-tip" placeholder="为队伍起名(不超过5字符)" bindinput="createGroupName" />
       </view>
-      <view class="col-auto ft35" bindtap="confirmGroupName">确定</view> 
+      <view class="col-auto ft35" style="color:#339a58;" bindtap="confirmGroupName">确定</view> 
     </view>
     <view class="groupeer-list">
       <view class="userinfo">
@@ -33,8 +34,12 @@
     </view>
   </block>
   <block wx:else>
-    <view class="tac  mt20 ft40 fwbold">
-        {{groupName}}
+    <view class="mt20">
+    <block wx:if="{{!isGroupLeader}}">
+        <view class="tac ft40 mt20">{{groupLeader}}邀请你加入TA的</view>
+    </block>
+    <view class="tac   ft40 fwbold">
+        {{groupName}}战队
     </view>
     <view class="groupeer-list" >
       <view class="userinfo"  wx:for="{{teamList}}" wx:for-index="index" wx:for-item="number" wx:key="number">
@@ -43,15 +48,17 @@
         <view><text class="userinfo-nickname">{{number.userId}}</text></view>
       </view>
     </view>
+    </view>
+
   </block>
   <view class="btn-wrapper">
     <view
-      class="invite-btn {{buttonCnt === 'invite' ? '':'none'}}"
+      class="invite-btn {{buttonCnt === 'invite'  || isGroupLeader ? '':'none'}}"
       bindtap = "inviteFriends">
         邀请好友
     </view>
     <view
-      class="invite-btn {{buttonCnt === 'join' ? '':'none'}}"
+      class="invite-btn {{buttonCnt === 'join' && !isGroupLeader? '':'none'}}"
       bindtap = "confirmJoinGroup">
         确认加入
     </view>
@@ -61,12 +68,14 @@
         加入战场
     </view>
   </view>
+  <view class=" ft30 tac mt20">自由组队时间将于6月14日18点整结束</view>
+  <view class=" ft30 tac mb20">未组队成功人员系统将智能匹配</view>
   </view>
 
-  <view class="fcwhite ft30 tac">6月14日前完成组队，6月15日开始进入战场</view>
+  <view class="ft30 tac bottom-tip">6月14日前完成组队，6月15日开始进入战场</view>
 </view>
 
-<view class="tip-cover {{hasCover ? '' : 'none'}}" >
+<view class="tip-cover {{hasCover ? '' : 'none'}}"  bindtap="hideCover">
   <view class="tip-content">
     <image src="/assets/share.png" class="share"></image>
   </view> 

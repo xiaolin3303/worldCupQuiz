@@ -63,6 +63,13 @@ page {
 	margin-top: 40rpx;
 }
 
+.mb10 {
+	margin-bottom: 10rpx;
+}
+.mb20 {
+	margin-bottom: 20rpx;
+}
+
 .ft25 {
 	font-size: 25rpx;
 }

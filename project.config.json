@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -63,7 +63,7 @@
 					"id": 4,
 					"name": "邀请好友",
 					"pathName": "pages/group/index/index",
-					"query": "groupId=9270"
+					"query": ""
 				},
 				{
 					"id": -1,

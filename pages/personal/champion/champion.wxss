@@ -248,6 +248,9 @@ swiper{
 	height : 35px;
 	line-height : 35px;
 }
+.champion-wrapper{
+	height : 100%;
+}
 
 .champion-wrapper .result-background {
 	width: 710rpx;
