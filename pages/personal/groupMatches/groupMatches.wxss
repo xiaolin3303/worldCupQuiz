@@ -96,6 +96,11 @@ swiper{
 	flex: 1;
 	justify-content: center;
 	display:flex;
+	box-sizing: border-box;
+}
+
+.group-match-list .match .box .item.vs {
+	flex: 0 1 auto;
 }
 
 .group-match-list .match .box .item .country {
@@ -213,6 +218,7 @@ swiper{
 	padding: 0 4px;
 	line-height: 16px;
 	color:#fff;
+	font-size: 25rpx;
 }
 
 .deadline{

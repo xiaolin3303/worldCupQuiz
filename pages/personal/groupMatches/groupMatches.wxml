@@ -15,18 +15,18 @@
             <view>{{group.group_id}}</view>
             <view>组</view>
           </view>
-          <view class="item">
+          <view class="item" style="justify-content: flex-start; padding-left: 20rpx">
             <view class="country">
               <text>{{group.team_name1}}</text>
               <image src="{{group.team_url1}}" class="icon national-flag flag-right"></image>
             </view>
           </view>
-          <view class="item">
+          <view class="item vs">
             <view class="country">
               <image src="/assets/icons/vs-icon.png" class="icon vs"></image>
             </view>
           </view>
-              <view class="item">
+            <view class="item" style="justify-content: flex-end; padding-right: 20rpx">
               <view class="country">
               <image src="{{group.team_url2}}" class="icon national-flag flag-left"></image>
               <text>{{group.team_name2}}</text>
@@ -82,6 +82,7 @@
       </view>
     </view>
   </view>
+  <view style="height:120rpx"></view>
 </view>
 
 

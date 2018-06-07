@@ -65,12 +65,7 @@ Page({
   },
 
   getUserInfo: function(e) {
-    console.log(e);
     wx.setStorageSync('userInfo' , e.detail.userInfo);
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+    wx.navigateBack({ delta: 1 })
   }
-
 })

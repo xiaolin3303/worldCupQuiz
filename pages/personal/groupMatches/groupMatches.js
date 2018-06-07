@@ -7,7 +7,7 @@ const testData = require("../../../test/testData");
 const championList  = require("../../../test/championList");
 const sepcTime = require("../../../config/specTimeConfig");
 const Host = require("../../../config/host.config");
-const username = wx.getStorageSync('username');
+const username = wx.getStorageSync('username') || 'viinyxu';
 
 Page({
 
@@ -27,17 +27,18 @@ Page({
   },
 
   onLoad:function(e) {
+    this.getGroupListData();
 
-    if(this.globalData.groupListData.length === 0 ){
-      this.getGroupListData();
-    }else{
+    // if(this.globalData.groupListData.length === 0 ){
+    //   this.getGroupListData();
+    // }else{
 
-        const {groupListData} = this.globalData;
+    //     const {groupListData} = this.globalData;
 
-        this.setData({
-            groupListData
-        })
-    }
+    //     this.setData({
+    //         groupListData
+    //     })
+    // }
 
   },
 
@@ -63,11 +64,29 @@ Page({
           isLock: group.ban_play === 1
         }))
 
+        let quizres = Object.assign({}, this.data.quizRes)
+
+        groupRes.forEach(group => {
+          if (group.player_answer_id > 0) {
+            // 用户之前选择过该答案
+            quizres = Object.assign(quizres, {
+              [group.item_id]: {
+                answerid: group.player_answer_id,
+                forecastScore: 100 * group.answerlist.filter(answer => answer.answer_id === group.player_answer_id)[0].odd
+              }
+            });
+          }
+        })
+        const totalScore = Object.keys(quizres).reduce((acc, groupId) => {
+          return acc + (quizres[groupId].forecastScore || 0)
+        }, 0)
         this.setData({
-          groupListData: groupRes
+          groupListData: groupRes,
+          quizRes: quizres,
+          totalScore
         })
 
-        this.globalData.groupListData = groupRes;
+        // this.globalData.groupListData = groupRes;
       }
     })
   },
@@ -93,11 +112,11 @@ Page({
       let quizres = Object.assign({}, this.data.quizRes, {
         [itemid]: {
           answerid,
-          forecastScore: 10 * odds
+          forecastScore: 100 * odds
         }
       })
 
-      const groupRes = this.globalData.groupListData.map(group => {
+      const groupRes = this.data.groupListData.map(group => {
 
         if (group.item_id !== itemid) {
           return group
@@ -226,7 +245,7 @@ Page({
             const intellRst = res.data.data;
             let quizResVar = {}
 
-            const groupRes = this.globalData.groupListData.map(group => {
+            const groupRes = this.data.groupListData.map(group => {
 
                 intellRst.map((intellItem) => {
                   const {item_id,answer_id} = intellItem;

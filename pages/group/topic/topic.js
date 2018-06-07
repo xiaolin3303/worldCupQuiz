@@ -10,6 +10,24 @@ Page({
     matchInfo: {},
     pList : [],
     teamInfo : [],
+    tabList: [{
+      id: 1,
+      caption: '第一场',
+      status: '竞猜中',
+    }, {
+      id: 2,
+      caption: '第二场',
+      status: '竞猜中',
+    }, {
+      id: 3,
+      caption: '第三场',
+      status: '竞猜中',
+    }, {
+      id: 4,
+      caption: '第四场',
+      status: '竞猜中',
+    }],
+    currentTab: 1,
     answerList : {
       'selectAnswerId': -1
     }
@@ -124,6 +142,13 @@ Page({
     })
 
     this.setData({ pList })
+  },
+
+  selectTab: function (e) {
+    const { tabid } = e.currentTarget.dataset;
+    this.setData({
+      currentTab: tabid
+    })
   },
 
   getUserInfo: function(e) {

@@ -1,24 +1,11 @@
 <!--personal.wxml-->
 <view class="topic-wrapper">
   <view class="tab row middle">
-    <view class="col tac item active">
-      <image src="/assets/icons/arrow-active.png" class="arrow"></image>        
-      <view class="mt20 ft30 ml35">第一场</view>
-      <view class="ft20 ml35">竞猜中</view>
-    </view>
-    <view class="col tac item">
-      <image src="/assets/icons/arrow.png" class="arrow"></image>    
-      <view class="mt20 ft30 ml35">第二场</view>
-      <view class="ft20 ml35">竞猜中</view>
-    </view>
-    <view class="col tac item active">
-      <image src="/assets/icons/arrow-active.png" class="arrow"></image>    
-      <view class="mt20 ft30 ml35">第三场</view>
-      <view class="ft20 ml35">竞猜中</view>
-    </view>
-    <view class="col tac item">
-      <view class="mt20 ft30 ml35">第四场</view>
-      <view class="ft20 ml35">竞猜中</view>
+    <view class="col tac item {{tab.id === currentTab ? 'active' : ''}}" wx:for="{{tabList}}" wx:for-item="tab" wx:key="tab.id" data-tabid="{{tab.id}}" bindtap="selectTab">
+      <image wx:if="{{tab.id === currentTab}}" src="/assets/icons/arrow-active.png" class="arrow"></image>
+      <image wx:else src="/assets/icons/arrow.png" class="arrow"></image>              
+      <view class="mt20 ft30 ml35">{{tab.caption}}</view>
+      <view class="ft20 ml35">{{tab.status}}</view>
     </view>
   </view>
   <view class="tip">以下为淘汰题，答对继续积分，答错则无法继续闯关</view>
